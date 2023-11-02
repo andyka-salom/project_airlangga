@@ -36,3 +36,12 @@ Route::get('/cust/profil-customer/show', [ProfilCustomerController::class, 'show
 Route::get('/profil-customer/edit-password', [ProfilCustomerController::class, 'editPassword'])->name('edit-password');
 Route::put('/profil-customer/update-password', [ProfilCustomerController::class, 'updatePassword'])->name('update-password');
 Route::delete('/profil-customer/delete-account', [ProfilCustomerController::class, 'destroy'])->name('delete-account');
+
+
+
+Route::get('Admincategory', [CategoryController::class, 'indexAdmin'])->name('category.index');
+Route::get('Admincategory/create', [CategoryController::class, 'create'])->name('category.create');
+Route::post('Admincategory', [CategoryController::class, 'store'])->name('category.store');
+Route::get('Admincategory/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+Route::put('Admincategory/{id}', [CategoryController::class, 'update'])->name('category.update');
+Route::delete('Admincategory/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
