@@ -13,7 +13,7 @@
                                     <img src="{{ asset($category->image) }}" alt="{{ $category->name }}" class="img-fluid mb-4">
                                     <h4 class="mb-3">{{ $category->name }}</h4>
                                     <p class="mb-4">{{ $category->description }}</p>
-                                    <a href="{{ route('category.show', $category->slug) }}" class="btn btn-secondary text-white px-5 py-3 rounded-pill">Read More</a>
+                                    <a href="{{ route('category.show', $category->id) }}" class="btn btn-secondary text-white px-5 py-3 rounded-pill">Read More</a>
                                 </div>
                             </div>
                         </div>

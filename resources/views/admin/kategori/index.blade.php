@@ -1,40 +1,43 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    
-    @if(Session::has('message'))
-    <div class= "alert alert-success">
-        {{Session::get('message')}}
+    <div class="container">
+        <h1>Kategori</h1>
+        <a href="{{ route('category.create') }}" class="btn btn-primary">Tambah Kategori</a>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Deskripsi</th>
+                    <th>Foto</th>
+                    <th>Tindakan</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($categories as $category)
+                    <tr>
+                        <td>{{ $category->id }}</td>
+                        <td>{{ $category->name }}</td>
+                        <td>{{ $category->description }}</td>
+                        <td>
+                            @if($category->photo)
+                                <img src="{{ asset('storage/' . $category->photo) }}" alt="{{ $category->name }}" width="50">
+                            @else
+                                Tidak ada foto
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{ route('category.edit', $category->id) }}" class="btn btn-warning">Edit</a>
+                            <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="display: inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')">Hapus</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
-    @endif
-
-    <div class="row">
-        <div class="container-fluid services row g-5 services-inner">
-            @foreach($categories as $category)
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay>
-                    <div class="services-item bg-light">
-                        <div class="p-4 text-center services-content">
-                            <div class="services-content-icon">
-                                <img src="{{ asset($category->image) }}" alt="{{ $category->name }}" class="img-fluid mb-4">
-                                <h4 class="mb-3">{{ $category->name }}</h4>
-                                <p class="mb-4">{{ $category->description }}</p>
-                                <a href="{{ url('Admincategory/'.$category->slug.'/edit') }}" class="btn btn-outline-success">edit</a>
-                                <form onsubmit="return confirm('Yakin Hapus Category?')" class="d-inline" action="{{ url('Admincategory/'.$category->id) }}" 
-                                    method="POST">
-                                    {{ csrf_field() }}
-                                    @method('DELETE')
-                                <button type="submit" class="btn btn-outline-danger">delete</button>
-                                </form>
-                                {{-- <a href="{{ url('Admincategori/'.$category->id.'/edit') }}" class="btn btn-outline-danger">delete</a> --}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</div>
-
-
 @endsection
