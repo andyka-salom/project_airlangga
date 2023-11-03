@@ -2,8 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Kategori: {{ $selectedCategory->name }}</h1>
-
+    
         <h2>Jasa dalam Kategori Ini</h2>
 
         @if ($jasas->count() > 0)

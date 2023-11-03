@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\jasa;
 use App\Models\profilpenyedia_jasa;
+use Illuminate\Support\Facades\Storage;
+
 
 
 class CategoryController extends Controller
@@ -15,6 +17,28 @@ class CategoryController extends Controller
         return view('cust.category', compact('categories'));
     }
 
+    public function show($id)
+    {
+        $category = Category::find($id);
+    
+        if (!$category) {
+            return redirect()->route('category.index')->with('error', 'Category not found.');
+        }
+    
+        $jasas = $category->jasas;
+    
+        return view('cust.categoryshow', compact('category', 'jasas'));
+    }
+    
+    public function showjasa($id_jasa)
+    {
+        $profilPenyediaJasas = profilpenyedia_jasa::where('id_jasa', $id_jasa)->get();
+    
+        
+        return view('cust.categoryshow-penyedia', compact('profilPenyediaJasas'));
+    }
+    
+    //for admin
     public function indexAdmin()
     {
         $categories = Category::all();
@@ -26,78 +50,77 @@ class CategoryController extends Controller
         return view('admin.kategori.create');
     }
 
-    public function store(Request $request)
+        public function store(Request $request)
     {
-        $data =[
-            'name'=> $request->nama_categori,
-            'slug'=> $request->slug,
-            'description'=> $request->desc,
-            'photo'=> $request->image,
-        ];
+        $request->validate([
+            'name' => 'required|unique:categories',
+            'description' => 'required',
+            'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan validasi file sesuai kebutuhan
+        ]);
 
-        // if($request->hasFile('image')){
-        //     $request->file('image')->move('images/', $request->file('image'->getClientOriginalName()));
-        // }
-        
-        $imageName = time().'.'.$request->image->extension();  
-        $request->image->move(public_path('images'), $imageName);
+        $category = new Category();
+        $category->name = $request->input('name');
+        $category->description = $request->input('description');
+        $category->slug = $request->input('name');
 
-        Category::create($data);
-        return redirect()->to('Admincategory')->with('message','Kategori berhasil di tambahkan');
-
-    }
-
-    public function edit(string $id)
-    {
-        $data = Category::where('id',$id)->first();
-        return view('admin.kategori.edit')-> with('data',$data);
-    }
-    
-    public function update(Request $request, string $id)
-    {
-        $data =[
-            'name'=> $request->nama_categori,
-            'slug'=> $request->slug,
-            'description'=> $request->desc,
-            'photo'=> $request->image,
-        ];
-    
-        // if($request->hasFile('image')) {
-        //     $imageName = time().'.'.$request->image->extension();  
-        //     $request->image->move(public_path('images'), $imageName);
-        //     $data->photo = 'images/'.$imageName;
-        // }
-    
-        // $data->save();
-        // $imageName = time().'.'.$request->image->extension();  
-        // $request->image->move(public_path('images'), $imageName);
-
-        Category::where('id',$id)->update($data);
-        return redirect()->to('Admincategory')->with('message','Kategori berhasil di Update');
-    }
-
-    public function show($id)
-    {
-        $selectedCategory = Category::find($id);
-        $jasas = $selectedCategory->jasas;
-        return view('cust.categoryshow', compact('selectedCategory', 'jasas'));
-    }
-    public function showjasa($id_jasa)
-    {
-        $profilPenyediaJasas = profilpenyedia_jasa::where('id_jasa', $id_jasa)->get();
-    
-        if ($profilPenyediaJasas->isEmpty()) {
-            return redirect()->route('jasa.index')->with('error', 'Profil penyedia jasa tidak ditemukan.');
+        if ($request->hasFile('photo')) {
+            $image = $request->file('photo');
+            $path = $image->store('category_photos', 'public'); 
+            $category->photo = $path;
         }
-    
-        return view('cust.categoryshow-penyedia', compact('profilPenyediaJasas'));
+
+        $category->save();
+
+        return redirect()->route('Admincategory')->with('success', 'Kategori berhasil ditambahkan.');
     }
-    
-    public function destroy(string $id)
+
+
+    public function edit($id)
     {
-        Category::where('id',$id)->delete();
-        return redirect()->to('Admincategory')->with('message','Kategori berhasil di Hapus');
+        $category = Category::find($id);
+        return view('admin.kategori.edit', compact('category'));
     }
-    
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|unique:categories,name,' . $id,
+            'description' => 'required',
+            'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
+        ]);
+
+        $category = Category::find($id);
+        $category->name = $request->input('name');
+        $category->description = $request->input('description');
+
+        if ($request->hasFile('photo')) {
+        
+            if ($category->photo) {
+                Storage::disk('public')->delete($category->photo);
+            }
+
+            $image = $request->file('photo');
+            $path = $image->store('category_photos', 'public'); // Simpan foto ke direktori 'public/category_photos'
+            $category->photo = $path;
+        }
+
+        $category->save();
+
+        return redirect()->route('Admincategory')->with('success', 'Kategori berhasil diperbarui.');
+    }
+
+    public function destroy($id)
+    {
+        $category = Category::find($id);
+
+        // Hapus foto jika ada
+        // if ($category->photo) {
+        //     Storage::disk('public')->delete($category->photo);
+        // }
+
+        $category->delete();
+
+        return redirect()->route('Admincategory')->with('success', 'Kategori berhasil dihapus.');
+    }
 }
 
