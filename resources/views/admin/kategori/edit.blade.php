@@ -19,15 +19,16 @@
 
             <div class="form-group">
                 <label for="photo">Foto:</label>
-                @if($category->photo)
-                    <img src="{{ asset('storage/' . $category->photo) }}" alt="{{ $category->name }}" width="150">
-                @else
-                    Tidak ada foto
-                @endif
-                <input type="file" name="photo" id="photo" class="form-control-file mt-2">
+                <input type="file" name="photo" id="photo" class="form-control">
             </div>
 
-            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+            <div class="form-group">
+                <img src="{{ asset('kategoriImages/'. $category->photo) }}" width="100">
+            </div>
+
+            <div style="margin-top: 10px;">
+                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+            </div>
         </form>
     </div>
 @endsection

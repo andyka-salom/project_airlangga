@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', [CategoryController::class, 'welcome'])->name('welcome');
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/category/{id}', [CategoryController::class, 'show'])->name('category.show');
 Route::get('/jasa/{jasaId}', [CategoryController::class, 'showjasa'])->name('jasa.show');
@@ -47,6 +48,13 @@ Route::get('/admin/categories/{id}/edit', [CategoryController::class, 'edit'])->
 Route::put('/admin/categories/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('/admin/categories/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
+Route::get('/jasa', [JasaController::class, 'index'])->name('jasa.index');
+Route::get('/admin/jasa', [JasaController::class, 'indexAdmin'])->name('Adminjasa');
+Route::get('/admin/jasa/create', [JasaController::class, 'create'])->name('jasa.create');
+Route::post('/admin/jasa', [JasaController::class, 'store'])->name('jasa.store');
+Route::get('/admin/jasa/{id}/edit', [JasaController::class, 'edit'])->name('jasa.edit');
+Route::put('/admin/jasa/{id}', [JasaController::class, 'update'])->name('jasa.update');
+Route::delete('/admin/jasa/{id}', [JasaController::class, 'destroy'])->name('jasa.destroy');
 
 Route::get('/order/{provider}', 'OrderController@showOrderForm')->name('order');
 Route::post('/order/{provider}', 'OrderController@placeOrder')->name('placeOrder');

@@ -11,7 +11,7 @@
                     <li>
                         <a href="{{ route('jasa.show', $jasa->id_jasa) }}">{{ $jasa->nama_jasa }}</a>
                         <p> deskripsi jasa : {{ $jasa->deskripsi_jasa }} </p>
-                     
+                        <img src="{{ asset('jasaImages/'. $jasa->image) }}" width="100">
                     </li>
                 @endforeach
             </ul>

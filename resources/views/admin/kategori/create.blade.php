@@ -18,10 +18,12 @@
 
             <div class="form-group">
                 <label for="photo">Foto:</label>
-                <input type="file" name="photo" id="photo" class="form-control-file">
+                <input type="file" name="photo" id="photo" class="form-control">
             </div>
 
-            <button type="submit" class="btn btn-primary">Simpan</button>
+            <div style="margin-top: 10px;">
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
         </form>
     </div>
 @endsection

@@ -11,11 +11,17 @@ use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
+    public function welcome()
+    {
+        $categories = Category::all();
+        return view('welcome', compact('categories'));
+    }
     public function index()
     {
         $categories = Category::all();
         return view('cust.category', compact('categories'));
     }
+
 
     public function show($id)
     {
@@ -58,17 +64,16 @@ class CategoryController extends Controller
             'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan validasi file sesuai kebutuhan
         ]);
 
+        $gambar = $request->photo;
+        $namaFile = $gambar->getClientOriginalName();
+
         $category = new Category();
         $category->name = $request->input('name');
         $category->description = $request->input('description');
         $category->slug = $request->input('name');
+        $category->photo = $namaFile;
 
-        if ($request->hasFile('photo')) {
-            $image = $request->file('photo');
-            $path = $image->store('category_photos', 'public'); 
-            $category->photo = $path;
-        }
-
+        $gambar->move(public_path().'/kategoriImages', $namaFile);
         $category->save();
 
         return redirect()->route('Admincategory')->with('success', 'Kategori berhasil ditambahkan.');
@@ -90,20 +95,12 @@ class CategoryController extends Controller
         ]);
 
         $category = Category::find($id);
+        $awal = $category->photo;
         $category->name = $request->input('name');
         $category->description = $request->input('description');
+        $category->photo = $awal;
 
-        if ($request->hasFile('photo')) {
-        
-            if ($category->photo) {
-                Storage::disk('public')->delete($category->photo);
-            }
-
-            $image = $request->file('photo');
-            $path = $image->store('category_photos', 'public'); // Simpan foto ke direktori 'public/category_photos'
-            $category->photo = $path;
-        }
-
+        $request->photo->move(public_path().'/kategoriImage', $awal);
         $category->save();
 
         return redirect()->route('Admincategory')->with('success', 'Kategori berhasil diperbarui.');
@@ -113,13 +110,14 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        // Hapus foto jika ada
-        // if ($category->photo) {
-        //     Storage::disk('public')->delete($category->photo);
-        // }
+        $file = public_path('/kategoriImages/').$category->image;
+
+        //cek ada file nya apa ngga
+        if (file_exists($file)){
+            @unlink($file);
+        }
 
         $category->delete();
-
         return redirect()->route('Admincategory')->with('success', 'Kategori berhasil dihapus.');
     }
 }

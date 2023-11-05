@@ -80,31 +80,31 @@
                     <h1>Kamu bisa pilih kategori yang kamu cari</h1>
                 </div>
                 <div class="row g-5 services-inner">
-                    {{-- @foreach($categories as $category)
+                    @foreach($categories as $category)
                     <div class="col-md-6 col-lg-4">
                         <div class="services-item bg-light">
                             <div class="p-4 text-center services-content">
                                 <div class="services-content-icon">
-                                        <img src="{{ asset($category->image) }}" alt="{{ $category->name }}">
+                                    <img src="{{ asset('kategoriImages/'. $category->photo) }}" width="100">
                                         <div class="intro">
                                             <h3>{{ $category->name }}</h3>            
-                                            <p>{{ $category->desc }}</p>
+                                            <p>{{ $category->description }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @endforeach --}}
-                    {{-- <div class="col-lg-4 offset-lg-4 d-none d-lg-block"></div> --}}
+                    @endforeach 
+                    {{-- <div class="col-lg-4 offset-lg-4 d-none d-lg-block"></div>
 
                 </div>
                 
             </div>
-        </div>
+        </div>--}}
         <!-- Services End -->
 
         <!-- Team Start -->
-        <div class="container-fluid py-5 mb-5 team">
+        {{-- <div class="container-fluid py-5 mb-5 team">
             <div class="container">
                 <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
                     <h5 class="text-primary">Review Terbaik</h5>
@@ -189,11 +189,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Team End -->
 
         
         <!-- Back to Top -->
-        <a href="#" class="btn btn-secondary btn-square rounded-circle back-to-top"><i class="fa fa-arrow-up text-white"></i></a>
-
+        {{-- <a href="#" class="btn btn-secondary btn-square rounded-circle back-to-top"><i class="fa fa-arrow-up text-white"></i></a> --}}
+    
 @endsection
