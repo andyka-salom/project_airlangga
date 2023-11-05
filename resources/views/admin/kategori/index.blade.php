@@ -11,7 +11,7 @@
                     <th>Nama</th>
                     <th>Deskripsi</th>
                     <th>Foto</th>
-                    <th>Tindakan</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,7 +22,7 @@
                         <td>{{ $category->description }}</td>
                         <td>
                             @if($category->photo)
-                                <img src="{{ asset('storage/' . $category->photo) }}" alt="{{ $category->name }}" width="50">
+                                <img src="{{ asset('kategoriImages/'. $category->photo) }}" alt="{{ $category->name }}" width="50">
                             @else
                                 Tidak ada foto
                             @endif
