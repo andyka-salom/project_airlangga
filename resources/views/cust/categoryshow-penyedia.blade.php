@@ -12,6 +12,8 @@
                 <p>Alamat: {{ $profilPenyediaJasa->address }}</p>
                 <p>Deskripsi: {{ $profilPenyediaJasa->description }}</p>
                 <p>Harga: {{ $profilPenyediaJasa->Harga ?? 'Tidak ada data' }}</p>
+                <a href="{{ route('order', $profilPenyediaJasa->id_provider) }}" class="btn btn-success">Place Order</a>
+
             </div>
         @endforeach
     </div>
