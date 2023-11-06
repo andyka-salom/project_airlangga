@@ -45,3 +45,5 @@ Route::post('Admincategory', [CategoryController::class, 'store'])->name('catego
 Route::get('Admincategory/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
 Route::put('Admincategory/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('Admincategory/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+Route::get('/profile', [ProfilCustomerController::class, 'show'])->name('profile');
