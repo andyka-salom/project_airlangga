@@ -40,6 +40,15 @@ Route::get('/profil-customer/edit-password', [ProfilCustomerController::class, '
 Route::put('/profil-customer/update-password', [ProfilCustomerController::class, 'updatePassword'])->name('update-password');
 Route::delete('/profil-customer/delete-account', [ProfilCustomerController::class, 'destroy'])->name('delete-account');
 
+Route::get('Admincategory', [CategoryController::class, 'indexAdmin'])->name('category.index');
+Route::get('Admincategory/create', [CategoryController::class, 'create'])->name('category.create');
+Route::post('Admincategory', [CategoryController::class, 'store'])->name('category.store');
+Route::get('Admincategory/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+Route::put('Admincategory/{id}', [CategoryController::class, 'update'])->name('category.update');
+Route::delete('Admincategory/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+Route::get('/profile', [ProfilCustomerController::class, 'show'])->name('profile');
+
 Route::get('/categories', [CategoryController::class, 'index'])->name('category.index');
 Route::get('/admin/categories', [CategoryController::class, 'indexAdmin'])->name('Admincategory');
 Route::get('/admin/categories/create', [CategoryController::class, 'create'])->name('category.create');
@@ -58,3 +67,4 @@ Route::delete('/admin/jasa/{id}', [JasaController::class, 'destroy'])->name('jas
 
 Route::get('/order/{provider}', 'OrderController@showOrderForm')->name('order');
 Route::post('/order/{provider}', 'OrderController@placeOrder')->name('placeOrder');
+
