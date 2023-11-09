@@ -61,7 +61,7 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required|unique:categories',
             'description' => 'required',
-            'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan validasi file sesuai kebutuhan
+            'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $gambar = $request->photo;
@@ -100,7 +100,7 @@ class CategoryController extends Controller
         $category->description = $request->input('description');
         $category->photo = $awal;
 
-        $request->photo->move(public_path().'/kategoriImage', $awal);
+        $request->photo->move(public_path().'/kategoriImages', $awal);
         $category->save();
 
         return redirect()->route('Admincategory')->with('success', 'Kategori berhasil diperbarui.');

@@ -13,7 +13,7 @@
                     <a href="/categories" class="nav-item nav-link @if(Request::is('categories')) active @endif">Kategori</a>
                     <a href="#" class="nav-item nav-link @if(Request::is('chat')) active @endif">Chat</a>
                     <a href="#" class="nav-item nav-link @if(Request::is('pemesanan')) active @endif">Pemesanan</a>
-                    <a href="/admin" class="nav-item nav-link @if(Request::is('admin')) active @endif">Admin</a>
+                    
 
                     @guest
                         <a class="nav-link @if(Request::is('login')) active @endif" href="{{ route('login') }}">{{ __('Login') }}</a>
