@@ -48,9 +48,14 @@ class JasaController extends Controller
         $jasas->image = $namaFile;
         // $jasas->slug = $request->input('nama_jasa');
 
-        $gambar->move(public_path().'/jasaImages', $namaFile);
+        $newNamaFile = $jasas->nama_jasa. '_' . $namaFile;
+        
+        // Simpan foto dengan nama file baru
+        $gambar->move(public_path().'/jasaImages', $newNamaFile);
+        $jasas->image = $newNamaFile;
+
         $jasas->save();
-        return redirect()->route('Adminjasa')->with('success', 'Kategori berhasil ditambahkan.');
+        return redirect()->route('Adminjasa')->with('success', 'Jasa berhasil ditambahkan.');
     }
 
     public function edit($id)
