@@ -68,17 +68,23 @@ class CategoryController extends Controller
 
         $gambar = $request->photo;
         $namaFile = $gambar->getClientOriginalName();
-
+        
         $category = new Category();
         $category->name = $request->input('name');
         $category->description = $request->input('description');
         $category->slug = $request->input('name');
-        $category->photo = $namaFile;
-
-        $gambar->move(public_path().'/kategoriImages', $namaFile);
+        
+        // Generate a new file name with the category name
+        $newNamaFile = $category->name. '_' . $namaFile;
+        
+        // Simpan foto dengan nama file baru
+        $gambar->move(public_path().'/kategoriImages', $newNamaFile);
+        $category->photo = $newNamaFile;
+        
         $category->save();
-
+        
         return redirect()->route('Admincategory')->with('success', 'Kategori berhasil ditambahkan.');
+        
     }
 
 
@@ -110,15 +116,21 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        $category = Category::find($id);
+        $category = Category::findorfail($id);
 
-        $file = public_path('/kategoriImages/').$category->image;
+        $file = public_path('/kategoriImages/').$category->photo;
+
+        if ($category->jasas()->count() > 0) {
+            return redirect()->route('Admincategory')->with('error', 'Kategori tidak dapat dihapus karena masih memiliki jasa terkait.');
+        }
+        
 
         //cek ada file nya apa ngga
         if (file_exists($file)){
             @unlink($file);
         }
 
+        
         $category->delete();
         return redirect()->route('Admincategory')->with('success', 'Kategori berhasil dihapus.');
     }

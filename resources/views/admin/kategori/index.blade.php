@@ -3,6 +3,11 @@
 @section('content')
     <div class="container">
         <h1>Kategori</h1>
+        @if(Session::has('message'))
+            <div class= "alert alert-success">
+                {{Session::get('message')}}
+            </div>
+            @endif
         <a href="{{ route('category.create') }}" class="btn btn-primary">Tambah Kategori</a>
         <table class="table mt-3">
             <thead>
