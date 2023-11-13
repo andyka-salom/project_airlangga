@@ -80,7 +80,7 @@ User::create([
     'name' => 'John Doe',
     'email' => 'john@example.com',
     'email_verified_at' => now(),
-    'password' => Hash::make('password123'),
+    'password' => Hash::make('password'),
     'role' => 'admin',
     'remember_token' => Str::random(10),
 ]);
@@ -90,7 +90,7 @@ User::create([
     'name' => 'Jane Smith',
     'email' => 'jane@example.com',
     'email_verified_at' => now(),
-    'password' => Hash::make('password456'),
+    'password' => Hash::make('password'),
     'role' => 'customer',
     'remember_token' => Str::random(10),
 ]);
@@ -100,7 +100,7 @@ User::create([
     'name' => 'Alice Johnson',
     'email' => 'alice@example.com',
     'email_verified_at' => now(),
-    'password' => Hash::make('password789'),
+    'password' => Hash::make('password'),
     'role' => 'service_provider',
     'remember_token' => Str::random(10),
 ]);
@@ -110,7 +110,7 @@ User::create([
     'name' => 'Bob Wilson',
     'email' => 'bob@example.com',
     'email_verified_at' => now(),
-    'password' => Hash::make('password123'),
+    'password' => Hash::make('password'),
     'role' => 'customer',
     'remember_token' => Str::random(10),
 ]);
@@ -120,7 +120,7 @@ User::create([
     'name' => 'Eve Davis',
     'email' => 'eve@example.com',
     'email_verified_at' => now(),
-    'password' => Hash::make('password456'),
+    'password' => Hash::make('password'),
     'role' => 'customer',
     'remember_token' => Str::random(10),
 ]);

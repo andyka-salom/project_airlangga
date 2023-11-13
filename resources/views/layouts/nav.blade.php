@@ -30,7 +30,12 @@
                                 <a class="dropdown-item" href="{{ route('profile') }}">
                                     {{ __('Profile') }}
                                 </a>
-
+                                <a class="dropdown-item" href="{{ route('order.history') }}">
+                                    {{ __('Riwayat Pemesanan') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('show.provider.form') }}">
+                                    {{ __('Become a Service Provider') }}
+                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">

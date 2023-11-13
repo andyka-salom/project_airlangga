@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\profilpenyedia_jasa;
+use App\Models\order;
+use App\Models\review;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -8,24 +12,68 @@ class OrderController extends Controller
 {
     public function showOrderForm($providerId)
     {
-        $provider = ProfilPenyediaJasa::find($providerId);
-    
-        return view('order', compact('provider'));
+        // Ambil data profil penyedia jasa berdasarkan $providerId
+        $profilPenyediaJasa = profilpenyedia_jasa::find($providerId);
+
+        if (!$profilPenyediaJasa) {
+            return redirect()->route('halaman_lain'); 
+        }
+
+        return view('cust.pemesanan.order', compact('profilPenyediaJasa'));
     }
-    
-    public function placeOrder(Request $request, $providerId)
+
+    public function submitOrder(Request $request)
     {
-        // Validate and store the order data
-        $order = new Order;
-        $order->customer_id = auth()->user()->id;
-        $order->provider_id = $providerId;
-        $order->order_date = $request->input('order_date');
-        $order->status_pembayaran = 'Pending'; // You can set an initial status here
-        $order->save();
+            $request->request->add(['status_selesai' =>'belum', 'status' =>'Unpaid','nama_customer' => Auth::user()->name]);
+            $order = order::create($request->all());
     
-        // You can add additional validation and error handling as needed
     
-        return redirect()->route('provider.profile')->with('success', 'Order placed successfully.');
+            \Midtrans\Config::$serverKey = config('midtrans.server_key');
+            \Midtrans\Config::$isProduction = false;
+            \Midtrans\Config::$isSanitized = true;
+            \Midtrans\Config::$is3ds = true;
+    
+            $params = array(
+                'transaction_details' => array(
+                    'order_id' => $order->id,
+                    'gross_amount' => $order->total_bayar,
+                ),
+                'customer_details' => array(
+                    'name' => $request->name,
+                    'phone' => $request->phone,
+                ),
+            );
+    
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
+            return view('cust.pemesanan.checkout', compact('snapToken', 'order'));
+        }
+                
+        public function callback(Request $request){
+            $serverKey = config('midtrans.server_key');
+            $hashed = hash("sha512", $request->order_id.$request->status_code.$request->gross_amount.$serverKey);
+            if ($hashed == $request->signature_key){
+                if ($request->transaction_status == 'capture'){
+                    $order = Order::find($request->order_id);
+                    $order->update(['status' => 'Paid']);
+                }
+            }
+        }
+        public function invoice($id){
+            $order = Order::find($id);
+            return view('cust.pemesanan.invoice', compact('order'));
+        }
+
+        public function orderHistory()
+        {
+            $userOrders = auth()->user()->orders;
+    
+            return view('cust.pemesanan.history', ['orders' => $userOrders]);
+        }
+        public function review($order_id)
+        {
+            $order = Order::findOrFail($order_id);
+    
+            return view('cust.pemesanan.review', ['order' => $order]);
+        }
     }
-    
-}
+

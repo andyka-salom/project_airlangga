@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('profilpenyedia_jasas', function (Blueprint $table) {
             $table->id('id_provider')->increments();
-            $table->unsignedBigInteger('provider_id');
+            $table->string('nama_toko');
             $table->string('photo');
             $table->string('address');
             $table->text('description');
             $table->unsignedBigInteger('no_rek')->nullable();
             $table->unsignedBigInteger('Harga');
-
+            $table->enum('status', ['daftar', 'pending', 'approved']);
             $table->unsignedBigInteger('id_jasa');
             $table->foreign('id_jasa')->references('id_jasa')->on('jasas');
 

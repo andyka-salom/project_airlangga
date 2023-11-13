@@ -38,11 +38,13 @@ class CategoryController extends Controller
     
     public function showjasa($id_jasa)
     {
-        $profilPenyediaJasas = profilpenyedia_jasa::where('id_jasa', $id_jasa)->get();
+        $profilPenyediaJasas = profilpenyedia_jasa::where('id_jasa', $id_jasa)
+            ->where('status', 'approved')
+            ->get();
     
-        
         return view('cust.categoryshow-penyedia', compact('profilPenyediaJasas'));
     }
+    
     
     //for admin
     public function indexAdmin()

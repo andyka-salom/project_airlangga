@@ -14,6 +14,7 @@ class review extends Model
         'provider_id',
         'rating',
         'comment',
+        'id_order'
     ];
 
     public function user() {
@@ -22,5 +23,9 @@ class review extends Model
 
     public function provider() {
         return $this->belongsTo(profilpenyedia_jasa::class, 'provider_id', 'id_provider');
+    }
+    public function order()
+    {
+        return $this->belongsTo(Order::class, 'id_order', 'id');
     }
 }

@@ -3,6 +3,9 @@ use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfilCustomerController;
 use App\Http\Controllers\JasaController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ProfilpenyediaJasaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,6 +68,33 @@ Route::get('/admin/jasa/{id}/edit', [JasaController::class, 'edit'])->name('jasa
 Route::put('/admin/jasa/{id}', [JasaController::class, 'update'])->name('jasa.update');
 Route::delete('/admin/jasa/{id}', [JasaController::class, 'destroy'])->name('jasa.destroy');
 
-Route::get('/order/{provider}', 'OrderController@showOrderForm')->name('order');
-Route::post('/order/{provider}', 'OrderController@placeOrder')->name('placeOrder');
+// Rute untuk menampilkan halaman pemesanan
+Route::get('/order/{providerId}', [OrderController::class,'showOrderForm'])->name('order');
+Route::post('/submit-order', [OrderController::class,'submitOrder'])->name('submit_order');
+Route::get('invoice/{id}', [OrderController::class,'invoice']);
 
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/order-history', [OrderController::class, 'orderHistory'])->name('order.history');
+    Route::get('/review/{order_id}', [OrderController::class, 'review'])->name('review');
+    Route::get('/review/{order_id}', [OrderController::class, 'review'])->name('review');
+    Route::post('/submit-review/{order_id}', [ReviewController::class, 'submitReview'])->name('submit.review');
+
+Route::get('/become-service-provider', [ProfilpenyediaJasaController::class, 'showForm'])->name('show.provider.form');
+Route::post('/submit-service-provider', [ProfilpenyediaJasaController::class, 'submitForm'])->name('submit.provider');
+
+    // Route::get('/penyediajasa/create', [ProfilpenyediaJasaController::class, 'create'])->name('cust.daftarpenyediajasa');
+    // Route::post('/penyediajasa/store', [ProfilpenyediaJasaController::class, 'store'])->name('penyediajasa.store');
+    // //daftar penyedia jasa
+    // Route::get('/become-service-provider', [ProfilpenyediaJasaController::class, 'showProviderForm'])->name('provider.form');
+    // Route::post('/submit-provider-form', [ProfilpenyediaJasaController::class, 'submitProviderForm'])->name('submit.provider');
+    // Route::get('/get-services', [ProfilpenyediaJasaController::class, 'getServices'])->name('get.services');
+
+    //admin daftar penyedia
+    Route::get('/penyediajasa', [ProfilpenyediaJasaController::class, 'index'])->name('admin.daftarpenyedia');
+Route::put('/penyediajasa/{id}/nonaktifkan', [ProfilpenyediaJasaController::class, 'nonaktifkan'])->name('penyediajasa.nonaktifkan');
+
+//daftar pendaftar penyedia
+Route::get('/pendaftar', [ProfilpenyediaJasaController::class, 'daftarPendaftar'])->name('admin.daftarpendaftar');
+Route::put('/pendaftar/{id}/ubahstatus/{status}', [ProfilpenyediaJasaController::class, 'ubahStatus'])->name('pendaftar.ubahstatus');
+});

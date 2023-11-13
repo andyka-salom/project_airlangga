@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class profilpenyedia_jasa extends Model
 {
     protected $table = 'profilpenyedia_jasas';
-
+    protected $primaryKey = 'id_provider';
     protected $fillable = [
         'provider_id',
         'photo',
@@ -18,6 +18,7 @@ class profilpenyedia_jasa extends Model
         'Harga',
         'id_jasa',
         'id_user',
+        'nama_toko',
     ];
 
     public function user() {

@@ -10,6 +10,7 @@ class jasa extends Model {
     protected $primaryKey = 'id_jasa';
     protected $fillable = [
         'nama_jasa',
+        'id_jasa',
         'deskripsi_jasa',
         'image',
         'id_categories',
