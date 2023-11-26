@@ -34,19 +34,26 @@ class ProfilpenyediaJasaController extends Controller
        
         $gambar = $request->photo;
         $namaFile = $gambar->getClientOriginalName();
-        $gambar->move(public_path().'/penyediaImages', $namaFile);
-        $user = Auth::user();
-        profilpenyedia_jasa::create([
-            'id_user' => $user->id,
-            'id_jasa' => $data['id_jasa'],
-            'nama_toko' => $data['nama_toko'],
-            'photo' => $gambar,
-            'address' => $data['address'],
-            'description' => $data['description'],
-            'no_rek' => $data['no_rek'],
-            'Harga' => $data['Harga'],
-            'status' => 'daftar', 
-        ]);
+        
+        $profilPenyediaJasa = new profilpenyedia_jasa();
+        $profilPenyediaJasa->id_user = Auth::user()->id;
+        $profilPenyediaJasa->id_jasa = $data['id_jasa'];
+        $profilPenyediaJasa->nama_toko = $data['nama_toko'];
+        $profilPenyediaJasa->address = $data['address'];
+        $profilPenyediaJasa->description = $data['description'];
+        $profilPenyediaJasa->no_rek = $data['no_rek'];
+        $profilPenyediaJasa->Harga = $data['Harga'];
+        $profilPenyediaJasa->status = 'daftar';
+        
+        // Generate a new file name with the store name
+        $newNamaFile = $profilPenyediaJasa->nama_toko . '_' . $namaFile;
+        
+        // Move the photo to the specified directory with the new file name
+        $gambar->move(public_path().'/penyediaImages', $newNamaFile);
+        $profilPenyediaJasa->photo = $newNamaFile;
+        
+        $profilPenyediaJasa->save();
+        
     
         return redirect()->back()->with('success', 'Form submitted successfully!');
     }

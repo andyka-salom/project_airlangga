@@ -9,7 +9,7 @@
                 <div class="card-body" style="height: fit-content;">
                     <h2 class="card-title">{{ $profilPenyediaJasa->nama_toko }}</h2>
                     @if($profilPenyediaJasa->photo)
-                    <img src="{{ asset('penyediaImages/' . $profilPenyediaJasa->photo) }}" alt="Photo Provider" class="img-fluid mb-3">
+                    <img src="{{ asset('penyediaImages/' . $profilPenyediaJasa->photo) }}" alt="Photo Provider" class="img-fluid mb-3"  width="150">
                     @else
                         Tidak ada foto
                     @endif
