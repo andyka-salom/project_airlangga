@@ -1,19 +1,25 @@
-
 @extends('layouts.app')
 
 @section('content')
-    <h1>Daftar Penyedia Jasa Approved</h1>
+    <div class="container">
+        <h1 class="mb-4">Daftar Penyedia Jasa Approved</h1>
 
-    @foreach ($penyediaJasas as $penyediaJasa)
-        <div>
-            <h2>{{ $penyediaJasa->nama_toko }}</h2>
-            <p>{{ $penyediaJasa->description }}</p>
-            <p>Status: {{ $penyediaJasa->status }}</p>
-            <form action="{{ route('penyediajasa.nonaktifkan', $penyediaJasa->id_provider) }}" method="post">
-                @csrf
-                @method('put')
-                <button type="submit">Nonaktifkan</button>
-            </form>
-        </div>
-    @endforeach
+        @forelse ($penyediaJasas as $penyediaJasa)
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{ $penyediaJasa->nama_toko }}</h2>
+                    <p class="card-text">Jasa : {{ $penyediaJasa->jasa->nama_jasa }}</p>
+                    <p class="card-text">{{ $penyediaJasa->description }}</p>
+                    <p class="card-text">Status : {{ $penyediaJasa->status }}</p>
+                    <form action="{{ route('penyediajasa.nonaktifkan', $penyediaJasa->id_provider) }}" method="post">
+                        @csrf
+                        @method('put')
+                        <button type="submit" class="btn btn-danger">Nonaktifkan</button>
+                    </form>
+                </div>
+            </div>
+        @empty
+            <p>Tidak ada penyedia jasa yang approved.</p>
+        @endforelse
+    </div>
 @endsection

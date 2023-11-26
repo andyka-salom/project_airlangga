@@ -22,6 +22,7 @@ Route::get('/', function () {
 });
 
 Route::get('/', [CategoryController::class, 'welcome'])->name('welcome');
+Route::get('/home', [CategoryController::class, 'home'])->name('home');
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/category/{id}', [CategoryController::class, 'show'])->name('category.show');
 Route::get('/jasa/{jasaId}', [CategoryController::class, 'showjasa'])->name('jasa.show');
@@ -29,7 +30,7 @@ Route::get('/cust/categoryshow', [CategoryController::class, 'show'])->name('cus
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
@@ -91,10 +92,10 @@ Route::post('/submit-service-provider', [ProfilpenyediaJasaController::class, 's
     // Route::get('/get-services', [ProfilpenyediaJasaController::class, 'getServices'])->name('get.services');
 
     //admin daftar penyedia
-    Route::get('/penyediajasa', [ProfilpenyediaJasaController::class, 'index'])->name('admin.daftarpenyedia');
-Route::put('/penyediajasa/{id}/nonaktifkan', [ProfilpenyediaJasaController::class, 'nonaktifkan'])->name('penyediajasa.nonaktifkan');
+    Route::get('/admin/penyediajasa', [ProfilpenyediaJasaController::class, 'index'])->name('admin.daftarpenyedia');
+    Route::put('/admin/penyediajasa/{id}/nonaktifkan', [ProfilpenyediaJasaController::class, 'nonaktifkan'])->name('penyediajasa.nonaktifkan');
 
 //daftar pendaftar penyedia
-Route::get('/pendaftar', [ProfilpenyediaJasaController::class, 'daftarPendaftar'])->name('admin.daftarpendaftar');
-Route::put('/pendaftar/{id}/ubahstatus/{status}', [ProfilpenyediaJasaController::class, 'ubahStatus'])->name('pendaftar.ubahstatus');
-});
+    Route::get('/admin/pendaftar', [ProfilpenyediaJasaController::class, 'daftarPendaftar'])->name('admin.daftarpendaftar');
+    Route::put('/admin/pendaftar/{id}/ubahstatus/{status}', [ProfilpenyediaJasaController::class, 'ubahStatus'])->name('pendaftar.ubahstatus');
+    });
