@@ -7,6 +7,13 @@
         @forelse ($pendaftarPenyediaJasas as $pendaftarJasa)
             <div class="card mb-4">
                 <div class="card-body">
+                    <td>
+                        @if($pendaftarJasa->photo)
+                            <img src="{{ asset('penyediaImages/'. $pendaftarJasa->photo) }}" width="50">
+                        @else
+                            Tidak ada foto
+                        @endif
+                    </td>
                     <h2 class="card-title">{{ $pendaftarJasa->nama_toko }}</h2>
                     <p class="card-text">{{ $pendaftarJasa->description }}</p>
                     <p class="card-text">Status: {{ $pendaftarJasa->status }}</p>

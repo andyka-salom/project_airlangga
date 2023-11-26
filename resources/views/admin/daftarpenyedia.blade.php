@@ -7,6 +7,13 @@
         @forelse ($penyediaJasas as $penyediaJasa)
             <div class="card mb-4">
                 <div class="card-body">
+                    <td>
+                        @if($penyediaJasa->photo)
+                            <img src="{{ asset('penyediaImages/'. $penyediaJasa->photo) }}" width="50">
+                        @else
+                            Tidak ada foto
+                        @endif
+                    </td>
                     <h2 class="card-title">{{ $penyediaJasa->nama_toko }}</h2>
                     <p class="card-text">Jasa : {{ $penyediaJasa->jasa->nama_jasa }}</p>
                     <p class="card-text">{{ $penyediaJasa->description }}</p>
