@@ -6,20 +6,14 @@ use App\Http\Controllers\JasaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ProfilpenyediaJasaController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [CategoryController::class, 'welcome'])->name('welcome');
 Route::get('/home', [CategoryController::class, 'home'])->name('home');
@@ -30,7 +24,7 @@ Route::get('/cust/categoryshow', [CategoryController::class, 'show'])->name('cus
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
@@ -51,15 +45,13 @@ Route::get('Admincategory/{id}/edit', [CategoryController::class, 'edit'])->name
 Route::put('Admincategory/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('Admincategory/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
-Route::get('/profile', [ProfilCustomerController::class, 'show'])->name('profile');
-
-Route::get('/categories', [CategoryController::class, 'index'])->name('category.index');
-Route::get('/admin/categories', [CategoryController::class, 'indexAdmin'])->name('Admincategory');
-Route::get('/admin/categories/create', [CategoryController::class, 'create'])->name('category.create');
-Route::post('/admin/categories', [CategoryController::class, 'store'])->name('category.store');
-Route::get('/admin/categories/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
-Route::put('/admin/categories/{id}', [CategoryController::class, 'update'])->name('category.update');
-Route::delete('/admin/categories/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+ 
+    Route::get('/admin/categories', [CategoryController::class, 'indexAdmin'])->name('Admincategory');
+    Route::get('/admin/categories/create', [CategoryController::class, 'create'])->name('category.create');
+    Route::post('/admin/categories', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/admin/categories/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::put('/admin/categories/{id}', [CategoryController::class, 'update'])->name('category.update');
+    Route::delete('/admin/categories/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 Route::get('/jasa', [JasaController::class, 'index'])->name('jasa.index');
 Route::get('/admin/jasa', [JasaController::class, 'indexAdmin'])->name('Adminjasa');
@@ -92,10 +84,10 @@ Route::post('/submit-service-provider', [ProfilpenyediaJasaController::class, 's
     // Route::get('/get-services', [ProfilpenyediaJasaController::class, 'getServices'])->name('get.services');
 
     //admin daftar penyedia
-    Route::get('/admin/penyediajasa', [ProfilpenyediaJasaController::class, 'index'])->name('admin.daftarpenyedia');
-    Route::put('/admin/penyediajasa/{id}/nonaktifkan', [ProfilpenyediaJasaController::class, 'nonaktifkan'])->name('penyediajasa.nonaktifkan');
+    Route::get('/penyediajasa', [ProfilpenyediaJasaController::class, 'index'])->name('admin.daftarpenyedia');
+Route::put('/penyediajasa/{id}/nonaktifkan', [ProfilpenyediaJasaController::class, 'nonaktifkan'])->name('penyediajasa.nonaktifkan');
 
 //daftar pendaftar penyedia
-    Route::get('/admin/pendaftar', [ProfilpenyediaJasaController::class, 'daftarPendaftar'])->name('admin.daftarpendaftar');
-    Route::put('/admin/pendaftar/{id}/ubahstatus/{status}', [ProfilpenyediaJasaController::class, 'ubahStatus'])->name('pendaftar.ubahstatus');
-    });
+Route::get('/pendaftar', [ProfilpenyediaJasaController::class, 'daftarPendaftar'])->name('admin.daftarpendaftar');
+Route::put('/pendaftar/{id}/ubahstatus/{status}', [ProfilpenyediaJasaController::class, 'ubahStatus'])->name('pendaftar.ubahstatus');
+});
