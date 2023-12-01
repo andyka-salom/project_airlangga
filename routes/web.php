@@ -13,7 +13,7 @@ use App\Http\Controllers\ProfilpenyediaJasaController;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\CategoryController::class, 'home'])->name('home');
 
 Route::get('/', [CategoryController::class, 'welcome'])->name('welcome');
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
