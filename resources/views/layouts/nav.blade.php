@@ -11,7 +11,7 @@
                 <div class="navbar-nav ms-auto mx-xl-auto p-0">
                     <a href="/home" class="nav-item nav-link @if(Request::is('home')) active @endif ">Home</a>
                     <a href="/categories" class="nav-item nav-link @if(Request::is('categories')) active @endif">Kategori</a>
-                    <a href="#" class="nav-item nav-link @if(Request::is('chat')) active @endif">Chat</a>
+                    <a href="/chatify" class="nav-item nav-link @if(Request::is('chat')) active @endif">Chat</a>
                     <a href="#" class="nav-item nav-link @if(Request::is('pemesanan')) active @endif">Pemesanan</a>
                     
 

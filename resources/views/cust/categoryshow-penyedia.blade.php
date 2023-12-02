@@ -19,7 +19,7 @@
                     <p class="card-text"><strong>Harga:</strong> {{ $profilPenyediaJasa->Harga ?? 'Tidak ada data' }}</p>
                     <a href="{{ route('order', $profilPenyediaJasa->id_provider) }}" class="btn btn-success">
                         <iconify-icon icon="icon-park-outline:shopping-bag"></iconify-icon> Order</a>
-                    <a href="#" class="btn btn-success">
+                    <a href="{{ route('chatify.room', optional($profilPenyediaJasa)->id_user) }}"  class="btn btn-success">
                         <iconify-icon icon="ep:chat-dot-round"></iconify-icon> Chat</a>
                     <a href="#" class="btn btn-success">
                         <iconify-icon icon="mdi:resume"></iconify-icon> Resume</a>

@@ -6,6 +6,7 @@ use App\Http\Controllers\JasaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ProfilpenyediaJasaController;
+use App\Http\Controllers\ChatifyController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -17,7 +18,10 @@ Route::get('/home', [App\Http\Controllers\CategoryController::class, 'home'])->n
 
 Route::get('/', [CategoryController::class, 'welcome'])->name('welcome');
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/chatify/{userId}', [ChatifyController::class, 'showRoom'])->name('chatify.room');
 
+    // Mengirim pesan
+    Route::post('/chatify/send-message', [ChatifyController::class, 'sendMessage'])->name('chatify.send-message');
 
 Route::group(['middleware' => ['auth','checkRole:customer,service_provider']], function(){
    // Rute untuk menampilkan halaman pemesanan
