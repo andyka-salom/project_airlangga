@@ -5,7 +5,7 @@
         <h1 class="mb-4">Profil Customer</h1>
 
         @if($profilCustomer)
-            <div class="card mb-4">
+            <div class="card mb-4 mt-5">
                 <div class="card-body">
                     <h4 class="card-title">{{ $user->name }}</h4>
                     <p class="card-text">Email: {{ $user->email }}</p>

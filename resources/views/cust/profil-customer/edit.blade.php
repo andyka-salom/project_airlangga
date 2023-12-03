@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Edit Profil Customer</h1>
+        <h1 style="margin-top: 100px;">Edit Profil Customer</h1>
         <form action="{{ route('profil-customer.update') }}" method="POST">
             @csrf
             @method('PUT')

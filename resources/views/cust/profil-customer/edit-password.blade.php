@@ -3,7 +3,7 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <div class="container">
-        <h1>Change Password</h1>
+        <h1 style="margin-top: 100px;">Change Password</h1>
 
         <form action="{{ route('update-password') }}" method="POST">
             @csrf
