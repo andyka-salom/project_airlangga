@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h1>Buat Profil Customer</h1>
+    <div class="container mt-5">
+        <h1 style="margin-top: 100px;">Buat Profil Customer</h1>
         <form action="{{ route('profil-customer.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
