@@ -58,7 +58,6 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <i class="bi-back"></i>
             <span>AirlanggaTalentNetwork</span>
         </a>
 
