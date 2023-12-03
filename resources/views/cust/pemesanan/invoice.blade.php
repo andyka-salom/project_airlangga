@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-        <h1>Detail Pesanan</h1>
+<div class="container mt-5">
+        <h1 style="margin-top: 100px;">Detail Pesanan</h1>
         <div class="order-details">
         <table>
         <tr>
