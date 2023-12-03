@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h2>Your Order History</h2>
+    <div class="container mt-5">
+        <h2 style="margin-top: 100px;">Your Order History</h2>
         <table class="table">
             <thead>
                 <tr>
