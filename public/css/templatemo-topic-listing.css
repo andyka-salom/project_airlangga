@@ -147,7 +147,7 @@ strong {
 }
 
 .section-overlay {
-  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+  background-color:  #80d0c7;
   position: absolute;
   top: 0;
   left: 0;
@@ -276,7 +276,7 @@ strong {
 /*---------------------------------------
   NAVIGATION              
 -----------------------------------------*/
-.sticky-wrapper {
+/* .sticky-wrapper {
   position: absolute;
   top: 0;
   right: 0;
@@ -285,10 +285,10 @@ strong {
 
 .sticky-wrapper.is-sticky .navbar {
   background-color: var(--secondary-color);
-}
+} */
 
 .navbar {
-  background: transparent;
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
   border-bottom: 1px solid rgba(128, 208, 199, 0.35);
   z-index: 9;
 }
@@ -330,7 +330,7 @@ strong {
 
 .navbar .dropdown-menu {
   background: var(--white-color);
-  box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+  box-shadow: 0 1rem 3rem transparent;
   border: 0;
   display: inherit;
   opacity: 0;
@@ -1071,7 +1071,7 @@ blockquote {
   }
   
   .navbar {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
   }
 
   .navbar-nav .dropdown-menu {
@@ -1152,3 +1152,39 @@ blockquote {
   }
 }
 
+.navbar-nav .dropdown:hover > .nav-link {
+  background-color: #f8f9fa; /* Hover background color */
+}
+
+.dropdown-menu {
+  background-color: #ffffff; /* Background color */
+  border: 1px solid #ced4da; /* Border color */
+}
+
+.dropdown-item {
+  color: #495057; /* Text color */
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  background-color: #f8f9fa; /* Hover background color */
+  color: #495057; /* Hover text color */
+}
+
+/* Navbar Icon Styles */
+.navbar-icon {
+  font-size: 1.5rem; /* Adjust icon size as needed */
+  color: #000000; /* Icon color */
+  cursor: pointer;
+}
+
+/* Adjust styles for larger screens */
+@media (min-width: 992px) {
+  .dropdown:hover .dropdown-menu {
+      display: block;
+  }
+}
+.site-footer {
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%); /* Sesuaikan dengan warna latar belakang footer */
+  color: #fff; /* Sesuaikan dengan warna teks footer */
+  padding: 20px 0;
+}

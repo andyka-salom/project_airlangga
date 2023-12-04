@@ -1,144 +1,92 @@
-{{-- <div class="container-fluid bg-primary">
-    <div class="container">
-        <nav class="navbar navbar-dark navbar-expand-lg py-0">
-            <a href="/" class="navbar-brand">
-                <h2 class="text-dark fw-bold d-block">Airlangga<span class="text-secondary">Talent Network</span> </h2>
-            </a>
-            <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse bg-transparent" id="navbarCollapse">
-                <div class="navbar-nav ms-auto mx-xl-auto p-0">
-                    <a href="/home" class="nav-item nav-link @if(Request::is('home')) active @endif ">Home</a>
-                    <a href="/categories" class="nav-item nav-link @if(Request::is('categories')) active @endif">Kategori</a>
-                    <a href="/chatify" class="nav-item nav-link @if(Request::is('chat')) active @endif">Chat</a>
-                    <a href="#" class="nav-item nav-link @if(Request::is('pemesanan')) active @endif">Pemesanan</a>
-                    
-
-                    @guest
-                        <a class="nav-link @if(Request::is('login')) active @endif" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        @if (Route::has('register'))
-                            <a class="nav-link @if(Request::is('register')) active @endif" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-                                    
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('profile') }}">
-                                    {{ __('Profile') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('order.history') }}">
-                                    {{ __('Riwayat Pemesanan') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('show.provider.form') }}">
-                                    {{ __('Become a Service Provider') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-
-                </div>
-            </div>
-        </nav>
-    </div>
-</div> --}}
-
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="#">
-            <span>AirlanggaTalentNetwork</span>
+        <a class="navbar-brand" href="{{ route('home') }}">
+            <i class="bi-back"></i>
+            <span>TalentNetwork</span>
         </a>
 
-        {{-- <div class="d-lg-none ms-auto me-4">
-            <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
-        </div> --}}
+        @auth
+            <div class="d-lg-none ms-auto me-4">
+                <a href="#top" class="navbar-icon bi-person smoothscroll" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{{ route('profil-customer.show') }}">Profile</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                </div>
+            </div>
+        @endauth
 
-        {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button> --}}
+        </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-lg-5 me-lg-auto">
-                <li class="nav-item">
-                    <a href="/home" class="nav-item nav-link @if(Request::is('home')) active @endif ">Home</a>
-                </li>
+                @auth
+                    @if (Auth::user()->role === 'customer')
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('category.index.cus') ? 'active' : '' }}" href="{{ route('category.index.cus') }}">category</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('order.history') ? 'active' : '' }}" href="{{ route('order.history') }}">My Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('chatify.room') ? 'active' : '' }}" href="{{ route('chatify.room', ['userId' => 1]) }}">Chat</a>
+                        </li>
+                    @elseif (Auth::user()->role === 'service_provider')
+                        <!-- Menu untuk penyedia jasa -->
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('category.index') ? 'active' : '' }}" href="{{ route('category.index') }}">My Services</a>
+                        </li>
+                        <!-- Tambahkan menu penyedia jasa lainnya sesuai kebutuhan -->
+                    @endif
+                @else
+                    <!-- Menu untuk pengunjung yang belum login -->
+                    <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_1">Home</a>
+                            </li>
 
-                <li class="nav-item">
-                    <a href="/categories" class="nav-item nav-link @if(Request::is('categories')) active @endif">Kategori</a>
-                </li>
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_2">Browse Topics</a>
+                            </li>
+    
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_3">How it works</a>
+                            </li>
 
-                <li class="nav-item">
-                    <a href="/chatify" class="nav-item nav-link @if(Request::is('chat')) active @endif">Chat</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-item nav-link @if(Request::is('pemesanan')) active @endif">Pemesanan</a>
-                </li>
-
-                {{-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
-
-                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                        <li><a class="dropdown-item" href="topics-listing.html">Topics Listing</a></li>
-
-                        <li><a class="dropdown-item" href="contact.html">Contact Form</a></li>
-                    </ul>
-                </li> --}}
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_4">FAQs</a>
+                            </li>
+                    <li class="nav-item">
+                    <a class="nav-link @if(Request::is('login')) active @endif" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                @endauth
             </ul>
 
-            <ul class="navbar-nav ms-lg-5 me-lg-auto">
-
-            @guest
-                        <a class="nav-link @if(Request::is('login')) active @endif" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        @if (Route::has('register'))
-                            <a class="nav-link @if(Request::is('register')) active @endif" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+            @auth
+            <li class="nav-item dropdown">
+                <a  class="navbar-icon bi-person smoothscroll {{ request()->routeIs(['profile', 'show.provider.form']) ? 'active' : '' }}" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{{ route('profile') }}">{{ __('My Profile') }}</a></li>
+                        <li><a class="dropdown-item" href="{{ route('show.provider.form') }}">{{ __('Become a Service Provider') }}</a></li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
                             </a>
-                                    
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('profile') }}">
-                                    {{ __('Profile') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('order.history') }}">
-                                    {{ __('Riwayat Pemesanan') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('show.provider.form') }}">
-                                    {{ __('Become a Service Provider') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
-                            </div>
                         </li>
-                    @endguest
-            </ul>
-                    
-            {{-- <div class="d-none d-lg-block">
-                <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
-            </div> --}}
+                    </ul>
+            </li>
+            @endauth
         </div>
     </div>
 </nav>
-
