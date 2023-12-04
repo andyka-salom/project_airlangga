@@ -38,7 +38,7 @@ Route::group(['middleware' => ['auth','checkRole:customer,service_provider']], f
     Route::get('/become-service-provider', [ProfilpenyediaJasaController::class, 'showForm'])->name('show.provider.form');
     Route::post('/submit-service-provider', [ProfilpenyediaJasaController::class, 'submitForm'])->name('submit.provider');
 //kategori
-    Route::get('/categories', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('/categories', [CategoryController::class, 'index'])->name('category.index.cus');
     Route::get('/category/{id}', [CategoryController::class, 'show'])->name('category.show');
     Route::get('/jasa/{jasaId}', [CategoryController::class, 'showjasa'])->name('jasa.show');
     Route::get('/cust/categoryshow', [CategoryController::class, 'show'])->name('cust.categoryshow');

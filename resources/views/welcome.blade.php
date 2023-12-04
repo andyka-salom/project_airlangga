@@ -55,7 +55,7 @@
         <!-- About End -->
 
         <!-- Services Start -->
-        <div class="container-fluid services py-5 mb-5">
+        <div class="container-fluid services py-5 mb-5" id="section_2">
             <div class="container">
                 <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 1000px;">
                     <h5 class="text-primary">Kategori</h5>
@@ -86,7 +86,7 @@
         <!-- Services End -->
 
         <!-- Team Start -->
-        {{-- <div class="container-fluid py-5 mb-5 team">
+        {{-- <div class="container-fluid py-5 mb-5 team" >
             <div class="container">
                 <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
                     <h5 class="text-primary">Review Terbaik</h5>
@@ -173,332 +173,124 @@
             </div>
         </div> --}}
         <!-- Team End -->
+            
+                    
+        <section class="timeline-section section-padding" id="section_3">
+                <div class="section-overlay"></div>
 
-        
-        <!-- Back to Top -->
-        {{-- <a href="#" class="btn btn-secondary btn-square rounded-circle back-to-top"><i class="fa fa-arrow-up text-white"></i></a> --}}
-        <section class="explore-section section-padding" id="section_2">
-            {{-- <div class="container"> --}}
-{{-- 
-                    <div class="col-12 text-center">
-                        <h2 class="mb-4">Kategori</h1>
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12 text-center">
+                            <h2 class="text-white mb-4">How does it work?</h1>
+                        </div>
+
+                        <div class="col-lg-10 col-12 mx-auto">
+                            <div class="timeline-container">
+                                <ul class="vertical-scrollable-timeline" id="vertical-scrollable-timeline">
+                                    <div class="list-progress">
+                                        <div class="inner"></div>
+                                    </div>
+
+                                    <li>
+                                        <h4 class="text-white mb-3">Temukan Keahlian dan Layanan</h4>
+
+                                        <p class="text-white">
+                                            Jelajahi beragam keahlian dan layanan yang ditawarkan oleh sesama mahasiswa. Gunakan fitur pencarian kami untuk menemukan topik favorit Anda, baik itu dukungan akademis, mentorship, keahlian teknis, atau layanan khusus lainnya.</p>
+
+                                        <div class="icon-holder">
+                                          <i class="bi-search"></i>
+                                        </div>
+                                    </li>
+                                    
+                                    <li>
+                                        <h4 class="text-white mb-3">Terhubung dengan Rekan-Rekan Berbakat</h4>
+
+                                        <p class="text-white">Terhubunglah dengan rekan-rekan berbakat yang sesuai dengan kebutuhan Anda. Telusuri profil, baca ulasan, dan temukan koneksi yang tepat untuk proyek atau tujuan belajar Anda. Platform ini memudahkan proses koneksi tanpa kendala.</p>
+
+                                        <div class="icon-holder">
+                                          <i class="bi-bookmark"></i>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <h4 class="text-white mb-3">Minta &amp; Tawarkan Bantuan </h4>
+
+                                        <p class="text-white">Baik Anda mencari bantuan atau menawarkan keahlian Anda, Talent Network menyediakan proses yang mudah. Mintalah layanan khusus atau tawarkan keahlian Anda kepada sesama mahasiswa. Platform ini dirancang untuk memfasilitasi kolaborasi dan dukungan di antara komunitas mahasiswa.</p>
+
+                                        <div class="icon-holder">
+                                          <i class="bi-book"></i>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-
-                </div> --}}
-            <div class="col-12 text-center">
-                <h2 class="mb-4">Kategori</h1>
-            </div>
-
-            <div class="container-fluid">
-                <div class="row">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button" role="tab" aria-controls="design-tab-pane" aria-selected="true">Design</button>
-                        </li>
-
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing-tab-pane" type="button" role="tab" aria-controls="marketing-tab-pane" aria-selected="false">Marketing</button>
-                        </li>
-
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Finance</button>
-                        </li>
-
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="music-tab" data-bs-toggle="tab" data-bs-target="#music-tab-pane" type="button" role="tab" aria-controls="music-tab-pane" aria-selected="false">Music</button>
-                        </li>
-
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="education-tab" data-bs-toggle="tab" data-bs-target="#education-tab-pane" type="button" role="tab" aria-controls="education-tab-pane" aria-selected="false">Education</button>
-                        </li>
-                    </ul>
                 </div>
-            </div>
+            </section>
+        <section class="faq-section section-padding" id="section_4">
+                <div class="container">
+                    <div class="row">
 
-            <div class="container">
-                <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <h2 class="mb-4">Frequently Asked Questions</h2>
+                        </div>
 
-                    <div class="col-12">
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="design-tab-pane" role="tabpanel" aria-labelledby="design-tab" tabindex="0">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-                                        <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
-                                                <div class="d-flex">
-                                                    <div>
-                                                        <h5 class="mb-2">Web Design</h5>
+                        <div class="clearfix"></div>
 
-                                                        <p class="mb-0">Topic Listing Template based on Bootstrap 5</p>
-                                                    </div>
+                        <div class="col-lg-5 col-12">
+                            <img src="images/faq_graphic.jpg" class="img-fluid" alt="FAQs">
+                        </div>
 
-                                                    <span class="badge bg-design rounded-pill ms-auto">14</span>
-                                                </div>
+                        <div class="col-lg-6 col-12 m-auto">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Apa itu Talent Network?
+                                        </button>
+                                    </h2>
 
-                                                <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-                                        <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
-                                                <div class="d-flex">
-                                                    <div>
-                                                        <h5 class="mb-2">Graphic</h5>
-
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                    </div>
-
-                                                    <span class="badge bg-design rounded-pill ms-auto">75</span>
-                                                </div>
-
-                                                <img src="images/topics/undraw_Redesign_feedback_re_jvm0.png" class="custom-block-image img-fluid" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
-                                                <div class="d-flex">
-                                                    <div>
-                                                        <h5 class="mb-2">Logo Design</h5>
-
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                    </div>
-
-                                                    <span class="badge bg-design rounded-pill ms-auto">100</span>
-                                                </div>
-
-                                                <img src="images/topics/colleagues-working-cozy-office-medium-shot.png" class="custom-block-image img-fluid" alt="">
-                                            </a>
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            Talent Network adalah <strong>platform online yang memungkinkan mahasiswa berbagi dan memanfaatkan keahlian khusus mereka satu sama lain.</strong> 
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="tab-pane fade" id="marketing-tab-pane" role="tabpanel" aria-labelledby="marketing-tab" tabindex="0">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.html">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2">Advertising</h5>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                  keahlian apa yang dapat saya temukan?
+                                    </button>
+                                    </h2>
 
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                        </div>
-
-                                                        <span class="badge bg-advertising rounded-pill ms-auto">30</span>
-                                                    </div>
-
-                                                    <img src="images/topics/undraw_online_ad_re_ol62.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.html">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2">Video Content</h5>
-
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                        </div>
-
-                                                        <span class="badge bg-advertising rounded-pill ms-auto">65</span>
-                                                    </div>
-
-                                                    <img src="images/topics/undraw_Group_video_re_btu7.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-6 col-12">
-                                            <div class="custom-block bg-white shadow-lg">
-                                                <a href="topics-detail.html">
-                                                    <div class="d-flex">
-                                                        <div>
-                                                            <h5 class="mb-2">Viral Tweet</h5>
-
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                        </div>
-
-                                                        <span class="badge bg-advertising rounded-pill ms-auto">50</span>
-                                                    </div>
-
-                                                    <img src="images/topics/undraw_viral_tweet_gndb.png" class="custom-block-image img-fluid" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                              </div>
-
-                            <div class="tab-pane fade" id="finance-tab-pane" role="tabpanel" aria-labelledby="finance-tab" tabindex="0">   <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
-                                        <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
-                                                <div class="d-flex">
-                                                    <div>
-                                                        <h5 class="mb-2">Investment</h5>
-
-                                                        <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                    </div>
-
-                                                    <span class="badge bg-finance rounded-pill ms-auto">30</span>
-                                                </div>
-
-                                                <img src="images/topics/undraw_Finance_re_gnv2.png" class="custom-block-image img-fluid" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="custom-block custom-block-overlay">
-                                            <div class="d-flex flex-column h-100">
-                                                <img src="images/businesswoman-using-tablet-analysis-graph-company-finance-strategy-statistics-success-concept-planning-future-office-room.jpg" class="custom-block-image img-fluid" alt="">
-
-                                                <div class="custom-block-overlay-text d-flex">
-                                                    <div>
-                                                        <h5 class="text-white mb-2">Finance</h5>
-
-                                                        <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint animi necessitatibus aperiam repudiandae nam omnis</p>
-
-                                                        <a href="topics-detail.html" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
-                                                    </div>
-
-                                                    <span class="badge bg-finance rounded-pill ms-auto">25</span>
-                                                </div>
-
-                                                <div class="social-share d-flex">
-                                                    <p class="text-white me-4">Share:</p>
-
-                                                    <ul class="social-icon">
-                                                        <li class="social-icon-item">
-                                                            <a href="#" class="social-icon-link bi-twitter"></a>
-                                                        </li>
-
-                                                        <li class="social-icon-item">
-                                                            <a href="#" class="social-icon-link bi-facebook"></a>
-                                                        </li>
-
-                                                        <li class="social-icon-item">
-                                                            <a href="#" class="social-icon-link bi-pinterest"></a>
-                                                        </li>
-                                                    </ul>
-
-                                                    <a href="#" class="custom-icon bi-bookmark ms-auto"></a>
-                                                </div>
-
-                                                <div class="section-overlay"></div>
-                                            </div>
+                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            Anda dapat menemukan berbagai <strong>keahlian</strong>, mulai dari bantuan akademis, mentorship, hingga keahlian teknis dan kreatif lainnya.
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="tab-pane fade" id="music-tab-pane" role="tabpanel" aria-labelledby="music-tab" tabindex="0">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
-                                        <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
-                                                <div class="d-flex">
-                                                    <div>
-                                                        <h5 class="mb-2">Composing Song</h5>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Bagaimana cara memilih penyedia jasa atau keahlian ?
+                                    </button>
+                                    </h2>
 
-                                                        <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                    </div>
-
-                                                    <span class="badge bg-music rounded-pill ms-auto">45</span>
-                                                </div>
-
-                                                <img src="images/topics/undraw_Compose_music_re_wpiw.png" class="custom-block-image img-fluid" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
-                                        <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
-                                                <div class="d-flex">
-                                                    <div>
-                                                        <h5 class="mb-2">Online Music</h5>
-
-                                                        <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                    </div>
-
-                                                    <span class="badge bg-music rounded-pill ms-auto">45</span>
-                                                </div>
-
-                                                <img src="images/topics/undraw_happy_music_g6wc.png" class="custom-block-image img-fluid" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 col-12">
-                                        <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
-                                                <div class="d-flex">
-                                                    <div>
-                                                        <h5 class="mb-2">Podcast</h5>
-
-                                                        <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                    </div>
-
-                                                    <span class="badge bg-music rounded-pill ms-auto">20</span>
-                                                </div>
-
-                                                <img src="images/topics/undraw_Podcast_audience_re_4i5q.png" class="custom-block-image img-fluid" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="education-tab-pane" role="tabpanel" aria-labelledby="education-tab" tabindex="0">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-3">
-                                        <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
-                                                <div class="d-flex">
-                                                    <div>
-                                                        <h5 class="mb-2">Graduation</h5>
-
-                                                        <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                    </div>
-
-                                                    <span class="badge bg-education rounded-pill ms-auto">80</span>
-                                                </div>
-
-                                                <img src="images/topics/undraw_Graduation_re_gthn.png" class="custom-block-image img-fluid" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="custom-block bg-white shadow-lg">
-                                            <a href="topics-detail.html">
-                                                <div class="d-flex">
-                                                    <div>
-                                                        <h5 class="mb-2">Educator</h5>
-
-                                                        <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
-                                                    </div>
-
-                                                    <span class="badge bg-education rounded-pill ms-auto">75</span>
-                                                </div>
-
-                                                <img src="images/topics/undraw_Educator_re_ju47.png" class="custom-block-image img-fluid" alt="">
-                                            </a>
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            Talent Network menyediakan sistem penilaian dan ulasan. Gunakan informasi ini untuk membantu Anda memilih penyedia jasa yang sesuai dengan kebutuhan Anda.
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+
 @endsection
