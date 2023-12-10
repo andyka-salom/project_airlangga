@@ -27,7 +27,7 @@
                             <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('category.index.cus') ? 'active' : '' }}" href="{{ route('category.index.cus') }}">category</a>
+                            <a class="nav-link {{ request()->routeIs('category.index.cus') ? 'active' : '' }}" href="{{ route('category.index.cus') }}">Category</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('order.history') ? 'active' : '' }}" href="{{ route('order.history') }}">My Orders</a>
@@ -44,6 +44,26 @@
                             <a class="nav-link {{ request()->routeIs('category.index') ? 'active' : '' }}" href="{{ route('category.index') }}">My Services</a>
                         </li>
                         <!-- Tambahkan menu penyedia jasa lainnya sesuai kebutuhan -->
+                    @elseif (Auth::user()->role === 'admin')
+                    <!-- Menu untuk admin -->
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('Admincategory') ? 'active' : '' }}" href="{{ route('Admincategory') }}">Category</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('Adminjasa') ? 'active' : '' }}" href="{{ route('Adminjasa') }}">Jasa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('admin.daftarpenyedia') ? 'active' : '' }}" href="{{ route('admin.daftarpenyedia') }}">Penyedia Jasa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('admin.daftarpendaftar') ? 'active' : '' }}" href="{{ route('admin.daftarpendaftar') }}">Req Penyedia Jasa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('chatify.room') ? 'active' : '' }}" href="{{ route('chatify.room', ['userId' => 1]) }}">Chat</a>
+                    </li>
                     @endif
                 @else
                     <!-- Menu untuk pengunjung yang belum login -->
@@ -52,7 +72,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link click-scroll" href="#section_2">Browse Topics</a>
+                                <a class="nav-link click-scroll" href="#section_2">Category</a>
                             </li>
     
                             <li class="nav-item">

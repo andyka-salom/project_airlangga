@@ -1,4 +1,4 @@
-<footer class="site-footer section-padding">
+<footer class="site-footer section-padding" style="margin-top: 30px">
     <div class="container">
         <div class="row">
 

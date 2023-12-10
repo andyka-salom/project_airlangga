@@ -2,8 +2,10 @@
 
 @section('content')
     <div class="container">
-        <h1 class="text-center" >Kategori Jasa</h1>
-        <div class="row">
+        <div class="col-lg-12 col-12 text-center">
+            <h3 class="mb-4" style="margin-top: 15px">Kategori Jasa</h3>
+        </div>
+        <div class="row" style="margin-top: -90px;">
             <div class="container-fluid services row g-5 services-inner">
                 @foreach($categories as $category)
                     <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay>

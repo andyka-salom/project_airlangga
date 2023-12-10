@@ -10,7 +10,12 @@
                     <h4 class="card-title">{{ $user->name }}</h4>
                     <p class="card-text">Email: {{ $user->email }}</p>
                     <p class="card-text">Alamat: {{ $profilCustomer->address }}</p>
-                    <p class="card-text">Foto: {{ $profilCustomer->photo }}</p>
+                    @if($profilCustomer->photo)
+                    <img src="{{ asset('profilImages/' . $profilCustomer->photo) }}" class="img-fluid mb-3" width="200px" height="200px" alt="">
+                    @else
+                    Tidak ada foto
+                    @endif
+                    {{-- <p class="card-text">Foto: {{ $profilCustomer->photo }}</p> --}}
 
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
