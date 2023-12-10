@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1 style="margin-top: 100px;">Buat Profil Customer</h1>
+        <h2>Buat Profil Customer</h2>
         <form action="{{ route('profil-customer.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="photo">Foto:</label>
+                <label for="photo">Foto Profile:</label>
                 <input type="file" name="photo" class="form-control">
             </div>
             <div class="form-group">

@@ -38,18 +38,29 @@ class ProfilCustomerController extends Controller
 
     public function store(Request $request)
     {
+
         $user = Auth::user();
-        $data = $request->validate([
-            'photo' => 'required',
+        $request->validate([
+            'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan validasi file sesuai kebutuhan
             'address' => 'required',
         ]);
 
-        ProfilCustomer::create([
-            'user_id' => $user->id,
-            'photo' => $data['photo'],
-            'address' => $data['address'],
-        ]);
+        $gambar = $request->photo;
+        $namaFile = $gambar->getClientOriginalName();
 
+        $profilCustomer = new ProfilCustomer();
+            $user->id;
+            $profilCustomer -> photo=$namaFile;
+            $profilCustomer -> $request->input('address');
+        
+        $newNamaFile = $profilCustomer->id_profilcust. '_' . $namaFile;
+        
+        // Simpan foto dengan nama file baru
+        $gambar->move(public_path().'/profileImages', $newNamaFile);
+        $profilCustomer->image = $newNamaFile;
+
+        $profilCustomer->save();
+        
         return redirect()->route('cust.profil-customer.show')
             ->with('success', 'Profil customer berhasil dibuat.');
     }
@@ -62,18 +73,22 @@ class ProfilCustomerController extends Controller
         return view('cust.profil-customer.edit', compact('profilCustomer'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         $user = Auth::user();
-        $data = $request->validate([
-            'photo' => 'required',
+        $request->validate([
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan validasi file sesuai kebutuhan
             'address' => 'required',
         ]);
 
-        ProfilCustomer::where('user_id', $user->id)->update([
-            'photo' => $data['photo'],
-            'address' => $data['address'],
-        ]);
+        $profilCustomer = ProfilCustomer::find($id);
+        $user->id;
+        $awal = $profilCustomer->photo;
+        $profilCustomer->address = $request->input('address');
+        $profilCustomer->photo = $awal;
+
+        $request->photo->move(public_path().'/ProfileImages', $awal);
+        $profilCustomer->save();
 
         return redirect()->route('cust.profil-customer.show')
             ->with('success', 'Profil customer berhasil diperbarui.');
@@ -102,20 +117,37 @@ class ProfilCustomerController extends Controller
         return redirect()->route('cust.profil-customer.show')->with('success', 'Password berhasil diperbarui.');
     }
 
-    public function destroy()
+    public function destroy($id)
 {
+    // Mengambil pengguna yang terautentikasi
     $user = Auth::user();
 
-    // Hapus data dari tabel profilcustomers jika ada
-    $profilCustomer = ProfilCustomer::where('user_id', $user->id)->first();
+    // Mencari profil pelanggan berdasarkan ID
+    $profilCustomer = ProfilCustomer::find($id);
+
+    // Memeriksa apakah profil pelanggan ditemukan
     if ($profilCustomer) {
+        // Mendapatkan jalur lengkap file gambar profil
+        $filePath = public_path('/profileImages/') . $profilCustomer->photo;
+
+        // Memeriksa apakah file gambar profil ada
+        if (file_exists($filePath)) {
+            // Menghapus file gambar profil
+            @unlink($filePath);
+        }
+
+        // Menghapus rekaman ProfilCustomer dari database
         $profilCustomer->delete();
+
+        // Menghapus pengguna yang terautentikasi
+        $user->delete();
+
+        // Alihkan pengguna ke rute 'home' dengan pesan keberhasilan
+        return redirect()->route('home')->with('success', 'Akun berhasil dihapus.');
+    } else {
+        // Alihkan pengguna ke rute 'home' dengan pesan kesalahan jika profil tidak ditemukan
+        return redirect()->route('home')->with('error', 'Profil tidak ditemukan.');
     }
-
-    // Hapus data dari tabel users
-    $user->delete();
-
-    return redirect()->route('home')->with('success', 'Akun berhasil dihapus.');
 }
 
 }
