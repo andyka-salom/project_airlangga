@@ -1,9 +1,9 @@
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+/* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 * {
   box-sizing: border-box;
-}
+} */
 
 .utama {
   background: transparent;
@@ -30,18 +30,19 @@ p {
   line-height: 20px;
   letter-spacing: 0.5px;
   margin: 20px 0 30px;
-}
+  color: #eee;
+} 
 
-span {
+ /* span {
   font-size: 12px;
-}
+} */
 
-a {
+/* a {
   color: #333;
   font-size: 14px;
   text-decoration: none;
   margin: 15px 0;
-}
+} */ */
 
 button {
   border-radius: 20px;
@@ -54,7 +55,7 @@ button {
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
-}
+} 
 
 button:active {
   transform: scale(0.95);
@@ -161,7 +162,7 @@ input {
 .overlay {
   background: #FF416C;
   background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-  background: linear-gradient(to right, #1f4568,#c48660);
+  background: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;

@@ -928,6 +928,7 @@ blockquote {
 .site-footer {
   border-bottom: 10px solid var(--secondary-color);
   position: relative;
+
 }
 
 .site-footer::after {
@@ -1187,4 +1188,10 @@ blockquote {
   background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%); /* Sesuaikan dengan warna latar belakang footer */
   color: #fff; /* Sesuaikan dengan warna teks footer */
   padding: 20px 0;
+}
+.containerutama{
+  margin-bottom: 105px;
+}
+.containerutamaorder{
+  margin-bottom: 23%;
 }

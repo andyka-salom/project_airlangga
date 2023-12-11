@@ -62,8 +62,9 @@
                         <a class="nav-link {{ request()->routeIs('admin.daftarpendaftar') ? 'active' : '' }}" href="{{ route('admin.daftarpendaftar') }}">Req Penyedia Jasa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('chatify.room') ? 'active' : '' }}" href="{{ route('chatify.room', ['userId' => 1]) }}">Chat</a>
+                        <a class="nav-link {{ request()->routeIs('chatify.room') ? 'active' : '' }}" href="{{ route('chatify.room', ['userId' => auth()->id()]) }}">Chat</a>
                     </li>
+
                     @endif
                 @else
                     <!-- Menu untuk pengunjung yang belum login -->
