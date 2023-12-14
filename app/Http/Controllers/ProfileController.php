@@ -17,11 +17,14 @@ class ProfileController extends Controller
         $user = Auth::user();
         
         if ($user->role === 'service_provider') {
-            // Fetch the service provider profiles for the current user with reviews
-            $serviceProviders = profilpenyedia_jasa::with(['reviews' => function ($query) {
-                $query->latest()->take(3);
+            $serviceProviders = profilpenyedia_jasa::with(['reviews.user' => function ($query) {
+                $query->select(['id', 'name', 'photo']);
             }])->where('id_user', $user->id)->get();
         }
+        if ($user->role !== 'service_provider') {
+            return view('profile', compact('user'));
+        }
+    
         return view('profile', compact('user', 'serviceProviders'));
     }
 
@@ -47,11 +50,11 @@ class ProfileController extends Controller
             $user->password = bcrypt($request->input('password'));
         }
 
-        $users = $user;
-        $awal = $users->photo;
+    
+        $awal = $user->photo;
         $user->photo = $awal;
 
-        $request->photo->move(public_path().'/kategoriImages', $awal);
+        $request->photo->move(public_path().'/fotouser', $awal);
 
         $user->save();
 

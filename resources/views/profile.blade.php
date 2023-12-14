@@ -17,9 +17,9 @@
                     @method('put')
                     <div id="foto-profil-container">
                 @if($user->photo)
-                    <img id="foto-profil" src="{{ asset('path/to/photo/' . $user->photo) }}" alt="Foto Profil">
+                    <img id="foto-profil" src="{{ asset('fotouser/'. $user->photo) }}" alt="Foto Profil">
                 @else
-                    <img id="foto-profil" src="{{ asset('user.png') }}" alt="Default Foto Profil">
+                    <img id="foto-profil" src="{{ asset('avatar.png') }}" alt="Default Foto Profil">
                 @endif
                 <label for="edit-foto-profil">Upload foto Baru</label>
                     <input type="file" id="edit-foto-profil" name="photo" accept="image/*">
@@ -43,7 +43,7 @@
                 <h2>Profil Penyedia Jasa</h2>
                 @foreach($serviceProviders as $provider)
                     <div class="card">
-                        <img src="{{ asset('path/to/photo/' . $provider->photo) }}" alt="Provider Photo">
+                        <img src="{{ asset('penyediaImages/' . $provider->photo) }}" alt="Provider Photo">
                         <h3> NAMA  : {{ $provider->nama_toko }}</h3>
                         <p> Alamat : {{ $provider->address }}</p>
                         <p> Deskripsi : {{ $provider->description }}</p>
@@ -52,7 +52,8 @@
                         
             <h4>Latest Reviews:</h4>
             @foreach($provider->reviews->take(3) as $review)
-            <p>{{ $review->user_id }}</p>
+            <img src="{{ asset('fotouser/' . $review->user->photo) }}" alt="{{ $review->user->name }}'s Photo">
+                <p>{{ $review->user->name }}</p>
                 <p>{{ $review->rating }}</p>
                 <p>{{ $review->comment }}</p>
                 <!-- Display other review details as needed -->
