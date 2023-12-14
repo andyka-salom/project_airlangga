@@ -1189,9 +1189,238 @@ blockquote {
   color: #fff; /* Sesuaikan dengan warna teks footer */
   padding: 20px 0;
 }
-.containerutama{
+/* .containerutama{
   margin-bottom: 105px;
 }
 .containerutamaorder{
   margin-bottom: 23%;
+}
+.containerpenyedia{
+  margin-bottom: 506px;
+} */
+
+
+.edit-profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.edit-profile-form {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%; /* Menyesuaikan ukuran formulir dengan lebar layar */
+  max-width: 800px; /* Maksimum lebar formulir */
+  text-align: center;
+}
+
+.profile-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+.edit-profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-profile-form {
+  text-align: center;
+}
+
+.profile-photo-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.review {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 15px;
+  border-radius: 4px;
+}
+
+/* Optional: Style the file input to match your design */
+input[type="file"] {
+  display: none;
+}
+
+/* public/css/styles.css */
+
+/* Container Styles */
+
+
+/* Profile Container Styles */
+#profil-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Photo Profile Container Styles */
+#foto-profil-container {
+  position: relative;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#foto-profil {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+#upload-foto {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+#edit-foto {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #3490dc;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Information Profile Styles */
+#informasi-profil {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Edit Button Styles */
+.edit-button {
+  background-color: #3490dc;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* Form Edit Profile Styles */
+#form-edit-profil {
+  width: 100%;
+}
+
+#form-edit-profil label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#form-edit-profil input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+#form-edit-profil button {
+  background-color: #3490dc;
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+#form-edit-profil button#cancel-nama,
+#form-edit-profil button#cancel-email,
+#form-edit-profil button#cancel-alamat,
+#form-edit-profil button#cancel-password {
+  background-color: #dc3545;
+  margin-left: 10px;
+}
+
+/* Responsive Styling */
+@media (max-width: 600px) {
+  #foto-profil {
+      width: 100%;
+      height: auto;
+  }
+
+  #edit-foto {
+      position: relative;
+      margin-top: 10px;
+  }
 }

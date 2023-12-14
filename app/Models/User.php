@@ -20,6 +20,8 @@ class User extends Authenticatable
         'email_verified_at',
         'password',
         'role',
+        'photo',
+        'address',
     ];
 
     /**
@@ -41,10 +43,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function profilCustomer() {
-        return $this->hasOne(profilcustomer::class, 'user_id', 'id');
-    }
-
     public function profilPenyediaJasa() {
         return $this->hasOne(profilpenyedia_jasa::class, 'id_user', 'id');
     }

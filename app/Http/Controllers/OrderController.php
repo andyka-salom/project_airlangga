@@ -75,5 +75,20 @@ class OrderController extends Controller
     
             return view('cust.pemesanan.review', ['order' => $order]);
         }
+
+        public function index()
+        {
+            $user = Auth::user();
+            $orders = Order::where('provider_id', $user->id)->get();
+            return view('orderhistory', compact('orders'));
+        }
+    
+        public function updateStatus($id)
+        {
+            $order = Order::findOrFail($id);
+            $order->status_selesai = 'selesai';
+            $order->save();
+            return redirect()->route('orders.index')->with('success', 'Status selesai berhasil diperbarui');
+        }
     }
 
