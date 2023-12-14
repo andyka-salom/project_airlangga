@@ -39,8 +39,9 @@
                             <a class="nav-link {{ request()->routeIs('order.history') ? 'active' : '' }}" href="{{ route('order.history') }}">My Orders</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('chatify.room') ? 'active' : '' }}" href="{{ route('chatify.room', ['userId' => 1]) }}">Chat</a>
+                            <a class="nav-link {{ request()->routeIs('chatify.room') ? 'active' : '' }}" href="{{ route('chatify.room', ['userId' => auth()->id()]) }}">Chat</a>
                         </li>
+
 
                         <!-- Tambahkan menu penyedia jasa lainnya sesuai kebutuhan -->
                     @elseif (Auth::user()->role === 'admin')

@@ -29,35 +29,38 @@ class ProfileController extends Controller
     }
 
     public function update(Request $request)
-    {
-        $user = Auth::user();
+{
+    $user = Auth::user();
 
-        // Validate the request data
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:users,email,' . $user->id,
-            'address' => 'nullable|string|max:255',
-            'password' => 'nullable|string|min:8',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Max 2MB
-        ]);
 
-        // Update user information
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->address = $request->input('address');
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255|unique:users,email,' . $user->id,
+        'address' => 'nullable|string|max:255',
+        'password' => 'nullable|string|min:8',
+        'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Max 2MB
+    ]);
 
-        if ($request->has('password')) {
-            $user->password = bcrypt($request->input('password'));
-        }
+    $user->name = $request->input('name');
+    $user->email = $request->input('email');
+    $user->address = $request->input('address');
 
-    
-        $awal = $user->photo;
-        $user->photo = $awal;
-
-        $request->photo->move(public_path().'/fotouser', $awal);
-
-        $user->save();
-
-        return redirect()->route('profil.index')->with('success', 'Profil berhasil diperbarui.');
+    if ($request->has('password')) {
+        $user->password = bcrypt($request->input('password'));
     }
+
+
+    if ($request->hasFile('photo')) {
+        $photoFileName = time() . '_' . $request->file('photo')->getClientOriginalName();
+
+        $request->file('photo')->move(public_path().'/jasaImages', $photoFileName);
+
+        $user->photo = $photoFileName;
+    }
+
+    $user->save();
+
+    return redirect()->route('profil.index')->with('success', 'Profil berhasil diperbarui.');
+}
+
 }
