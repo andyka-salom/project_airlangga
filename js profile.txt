@@ -1,0 +1,57 @@
+{{-- <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const uploadFotoInput = document.getElementById('upload-foto');
+            const fotoProfil = document.getElementById('foto-profil');
+            const editFotoButton = document.getElementById('edit-foto');
+            const editPasswordLink = document.getElementById('edit-password');
+            const formEditProfil = document.getElementById('form-edit-profil');
+            const editProfilForm = document.getElementById('edit-profil-form');
+
+            function toggleEditForm(inputId, cancelButtonId) {
+                const inputField = document.getElementById(inputId);
+                const cancelButton = document.getElementById(cancelButtonId);
+
+                inputField.readOnly = !inputField.readOnly;
+
+                
+            }
+
+            // Event listener untuk tombol "Edit" foto profil
+            editFotoButton.addEventListener('click', function () {
+                uploadFotoInput.click();
+            });
+
+            // Event listener untuk tombol "Edit" setiap informasi profil
+            const editButtons = document.querySelectorAll('.edit-button');
+            editButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    const inputId = 'edit-' + button.id.split('-')[1];
+                    const cancelButtonId = 'cancel-' + button.id.split('-')[1];
+                    toggleEditForm(inputId, cancelButtonId);
+                });
+            });
+
+            // Event listener untuk mengganti foto profil saat input foto diubah
+            uploadFotoInput.addEventListener('change', function (event) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    fotoProfil.src = e.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            });
+
+            // Event listener untuk menampilkan form edit profil saat link di klik
+            editPasswordLink.addEventListener('click', function (event) {
+                event.preventDefault();
+                formEditProfil.style.display = 'block';
+            });
+
+            // Event listener untuk menyembunyikan form edit profil saat formulir di kirim
+            editProfilForm.addEventListener('submit', function () {
+                formEditProfil.style.display = 'none';
+            });
+        });
+    </script> --}}

@@ -925,16 +925,21 @@ blockquote {
 /*---------------------------------------
   SITE FOOTER              
 -----------------------------------------*/
+
 .site-footer {
   border-bottom: 10px solid var(--secondary-color);
-  position: relative;
-
+  /* position: fixed; */
+  bottom: 0;
+  width: 100%;
+  background-color: #333; /* Sesuaikan dengan warna latar belakang footer Anda */
+  color: #fff; /* Sesuaikan dengan warna teks footer Anda */
+  padding: 20px 0;
 }
 
 .site-footer::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -10px; /* Sesuaikan dengan ketebalan border-bottom footer Anda */
   right: 0;
   width: 0;
   height: 0;
@@ -943,6 +948,7 @@ blockquote {
   border-color: transparent transparent var(--secondary-color) transparent;
   pointer-events: none;
 }
+
 
 .site-footer-title {
   color: var(--primary-color); 
@@ -1214,7 +1220,7 @@ blockquote {
   padding: 20px;
   width: 100%; /* Menyesuaikan ukuran formulir dengan lebar layar */
   max-width: 800px; /* Maksimum lebar formulir */
-  text-align: center;
+  /* text-align: center; */
 }
 
 .profile-photo {
@@ -1232,7 +1238,7 @@ h2 {
 form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
 }
 
 label {
@@ -1263,7 +1269,7 @@ textarea {
 }
 
 .edit-profile-form {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .profile-photo-container {
