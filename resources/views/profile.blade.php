@@ -7,12 +7,12 @@
         <div id="profil-container">
             {{-- Foto Profil --}}
             <div id="foto-profil-container">
-            @if($user->photo)
-                    <img id="foto-profil" src="{{ asset('fotouser/'. $user->photo) }}" alt="Foto Profil">
+                @if($user->photo)
+                    <img id="foto-profil" src="{{ asset('fotouser/'. $user->photo) }}" alt="Foto Profil" class="clickable-photo">
                 @else
-                    <img id="foto-profil" src="{{ asset('avatar.png') }}" alt="Default Foto Profil">
+                    <img id="foto-profil" src="{{ asset('avatar.png') }}" alt="Default Foto Profil" class="clickable-photo">
                 @endif
-                
+                <br>
             </div>
 
             {{-- Informasi Profil --}}
@@ -20,10 +20,8 @@
                 <form id="edit-profil-form" method="post" action="{{ route('profil.update') }}" enctype="multipart/form-data">
                     @csrf
                     @method('put')
-                    <div class="form-group">
-                        <label for="edit-foto-profil">Upload foto</label>
-                        <input type="file" name="photo" id="edit-foto-profil" class="form-control">
-                    </div>
+                    <label for="edit-foto-profil" class="btn btn-primary">Ganti Foto Profil</label>
+                    <input type="file" name="photo" id="edit-foto-profil" class="form-control" style="display: none;">
                     <label for="edit-nama">Nama:</label>
                     <input type="text" id="edit-nama" name="name" value="{{ $user->name }}">
 
@@ -35,7 +33,7 @@
 
                     <label for="edit-password">Password Baru:</label>
                     <input type="password" id="edit-password" name="password">
-                    <button type="submit">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
             </div>
         </div>
@@ -66,19 +64,42 @@
             @endforeach
         @endif
     </div>
-    
+
+    <!-- Modal for displaying larger profile picture -->
+    <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="photoModalLabel">Foto Profil</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="modal-photo" src="#" alt="Foto Profil" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            const uploadFotoButton = document.getElementById('foto-profil');
             const uploadFotoInput = document.getElementById('edit-foto-profil');
-            const fotoProfil = document.getElementById('foto-profil');
-            
-            // Event listener untuk mengganti foto profil saat input foto diubah
+            const modalPhoto = document.getElementById('modal-photo');
+
+            // Event listener untuk menampilkan foto profil dalam modal
+            uploadFotoButton.addEventListener('click', function () {
+                modalPhoto.src = uploadFotoButton.src;
+                $('#photoModal').modal('show');
+            });
+
+            // Event listener untuk menampilkan preview foto saat memilih file
             uploadFotoInput.addEventListener('change', function (event) {
                 const file = event.target.files[0];
                 const reader = new FileReader();
 
                 reader.onload = function (e) {
-                    fotoProfil.src = e.target.result;
+                    uploadFotoButton.src = e.target.result;
+                    modalPhoto.src = e.target.result; // Update modal photo as well
                 };
 
                 reader.readAsDataURL(file);
