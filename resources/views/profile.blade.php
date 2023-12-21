@@ -1,29 +1,26 @@
+
 <!-- resources/views/profil/index.blade.php -->
 
 @extends('layouts.app')
 
 @section('content')
     <div class="container">
-        <h1>Profil Pengguna</h1>
+        <h3>Profil Pengguna</h3>
 
         <div id="profil-container">
             {{-- Foto Profil --}}
-        
+            <div id="foto-profil-container">
+                <img id="foto-profil" src="{{ $user->photo ? asset('fotouser/'. $user->photo) : asset('avatar.png') }}" alt="Foto Profil">
+                <label for="edit-foto-profil">Ubah Foto</label>
+                <input type="file" id="edit-foto-profil" name="photo" accept="image/*">
+            </div>
 
             {{-- Informasi Profil --}}
             <div id="informasi-profil">
                 <form id="edit-profil-form" method="post" action="{{ route('profil.update') }}">
                     @csrf
                     @method('put')
-                    <div id="foto-profil-container">
-                @if($user->photo)
-                    <img id="foto-profil" src="{{ asset('fotouser/'. $user->photo) }}" alt="Foto Profil">
-                @else
-                    <img id="foto-profil" src="{{ asset('avatar.png') }}" alt="Default Foto Profil">
-                @endif
-                <label for="edit-foto-profil">Upload foto Baru</label>
-                    <input type="file" id="edit-foto-profil" name="photo" accept="image/*">
-            </div>
+
                     <label for="edit-nama">Nama:</label>
                     <input type="text" id="edit-nama" name="name" value="{{ $user->name }}">
 
@@ -35,34 +32,37 @@
 
                     <label for="edit-password">Password Baru:</label>
                     <input type="password" id="edit-password" name="password">
+
                     <button type="submit">Simpan</button>
                 </form>
             </div>
         </div>
+
         @if($user->role === 'service_provider')
-                <h2>Profil Penyedia Jasa</h2>
-                @foreach($serviceProviders as $provider)
-                    <div class="card">
-                        <img src="{{ asset('penyediaImages/' . $provider->photo) }}" alt="Provider Photo">
-                        <h3> NAMA  : {{ $provider->nama_toko }}</h3>
-                        <p> Alamat : {{ $provider->address }}</p>
-                        <p> Deskripsi : {{ $provider->description }}</p>
-                        <p>Status: {{ $provider->status }}</p>
-                        <p>Harga: {{ $provider->Harga }}</p>
-                        
-            <h4>Latest Reviews:</h4>
-            @foreach($provider->reviews->take(3) as $review)
-            <img src="{{ asset('fotouser/' . $review->user->photo) }}" alt="{{ $review->user->name }}'s Photo">
-                <p>{{ $review->user->name }}</p>
-                <p>{{ $review->rating }}</p>
-                <p>{{ $review->comment }}</p>
-                <!-- Display other review details as needed -->
+            <h2>Profil Penyedia Jasa</h2>
+            @foreach($serviceProviders as $provider)
+                <div class="card">
+                    <img src="{{ asset('penyediaImages/' . $provider->photo) }}" alt="Provider Photo">
+                    <h3>NAMA: {{ $provider->nama_toko }}</h3>
+                    <p>Alamat: {{ $provider->address }}</p>
+                    <p>Deskripsi: {{ $provider->description }}</p>
+                    <p>Status: {{ $provider->status }}</p>
+                    <p>Harga: {{ $provider->Harga }}</p>
+
+                    <h4>Latest Reviews:</h4>
+                    @foreach($provider->reviews->take(3) as $review)
+                        <div class="review">
+                            <img src="{{ asset('fotouser/' . $review->user->photo) }}" alt="{{ $review->user->name }}'s Photo">
+                            <p>{{ $review->user->name }}</p>
+                            <p>Rating: {{ $review->rating }}</p>
+                            <p>Comment: {{ $review->comment }}</p>
+                        </div>
+                    @endforeach
+                </div>
             @endforeach
-                    </div>
-                @endforeach
-            @endif
+        @endif
     </div>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const uploadFotoInput = document.getElementById('upload-foto');

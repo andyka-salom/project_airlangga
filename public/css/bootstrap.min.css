@@ -96,6 +96,9 @@ body {
     color: var(--bs-body-color);
     text-align: var(--bs-body-text-align);
     background-color: var(--bs-body-bg);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent
 }
