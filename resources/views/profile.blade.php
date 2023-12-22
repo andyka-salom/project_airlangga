@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h1>Profil Pengguna</h1>
-
+        <div class="outer-container">
         <div id="profil-container">
             {{-- Foto Profil --}}
             <div id="foto-profil-container">
@@ -20,7 +20,9 @@
                 <form id="edit-profil-form" method="post" action="{{ route('profil.update') }}" enctype="multipart/form-data">
                     @csrf
                     @method('put')
+                    <div class="center-label">
                     <label for="edit-foto-profil" class="btn btn-primary">Ganti Foto Profil</label>
+                    </div>
                     <input type="file" name="photo" id="edit-foto-profil" class="form-control" style="display: none;">
                     <label for="edit-nama">Nama:</label>
                     <input type="text" id="edit-nama" name="name" value="{{ $user->name }}">
@@ -63,6 +65,7 @@
                 </div>
             @endforeach
         @endif
+        </div>
     </div>
 
     <!-- Modal for displaying larger profile picture -->
