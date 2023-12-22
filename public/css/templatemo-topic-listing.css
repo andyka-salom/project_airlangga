@@ -928,11 +928,11 @@ blockquote {
 
 .site-footer {
   border-bottom: 10px solid var(--secondary-color);
-  /* position: fixed; */
+  position: relative;
   bottom: 0;
   width: 100%;
-  background-color: #333; /* Sesuaikan dengan warna latar belakang footer Anda */
-  color: #fff; /* Sesuaikan dengan warna teks footer Anda */
+  background-color: #333; 
+  color: #fff; 
   padding: 20px 0;
 }
 
