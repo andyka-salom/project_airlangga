@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class ="containerpenyedia">
 <div class="container mt-5">
     <h3 class="mb-4 text-center">Daftar Pendaftar Penyedia Jasa</h3>
 
@@ -40,5 +41,6 @@
             <p class="text-muted">Tidak ada pendaftar penyedia jasa.</p>
         </div>
     @endforelse
+</div>
 </div>
 @endsection

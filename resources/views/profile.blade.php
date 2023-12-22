@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Profil Pengguna</h1>
+        <h2 style="text-align: center">Profil Pengguna</h2>
         <div class="outer-container">
         <div id="profil-container">
             {{-- Foto Profil --}}

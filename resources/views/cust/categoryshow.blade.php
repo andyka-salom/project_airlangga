@@ -19,7 +19,7 @@
             <p>Tidak ada jasa dalam kategori ini.</p>
         @endif
     </div> --}}
-
+    <div class ="containerpenyedia">
     <div class="container">
         <div class="row">
     
@@ -65,6 +65,6 @@
             </div>    
         </div>
     </div> 
-
+    </div>
 
 @endsection
