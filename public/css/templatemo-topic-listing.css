@@ -1511,4 +1511,37 @@ h4 {
   color: #666;
 }
 
+    /* Tambahkan CSS berikut untuk mengatur tampilan ke kiri */
+    #profil-container {
+      display: flex;
+      justify-content: center; /* Mengatur agar konten berada di tengah secara horizontal */
+      align-items: flex-start;
+      align-items: center;
+      /* Jika ingin foto-profil-container berada di tengah secara vertikal juga, gunakan align-items: center */
+  }
+
+  #foto-profil-container {
+      margin-right: 20px; /* Atur jarak antara foto profil dan informasi profil */
+      text-align: center;
+  }
+
+  #informasi-profil {
+      width: 100%; /* Agar informasi profil mengambil sisa ruang yang tersedia */
+  }
+ 
+  .btn-primary {
+    width: 150px; /* Sesuaikan leba sesuai kebutuhan */
+}
+
+.outer-container {
+  border: 5px solid #80d0c7;
+  padding: 50px;
+  border-radius: 40px;
+  margin: 20px;
+}
+
+.center-label {
+  text-align: center;
+}
+
 /* ... your existing styles ... */
