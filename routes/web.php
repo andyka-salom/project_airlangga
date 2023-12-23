@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ProfilpenyediaJasaController;
 use App\Http\Controllers\ChatifyController;
+use App\Http\Controllers\ResumeController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -49,6 +50,7 @@ Route::group(['middleware' => ['auth','checkRole:customer,service_provider']], f
     Route::get('/cust/categoryshow', [CategoryController::class, 'show'])->name('cust.categoryshow');
     
    
+Route::get('/resume/{user}/{providerId}', [ResumeController::class, 'showResume'])->name('resume');
 });
    
 Route::group(['middleware' => ['auth','checkRole:service_provider']], function(){
