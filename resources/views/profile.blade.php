@@ -52,15 +52,21 @@
                     <p>Harga: {{ $provider->Harga }}</p>
                     <h4>Latest Reviews:</h4>         
                     <div class="reviews-container">
-                        @foreach($provider->reviews->take(3) as $review)
-                            <div class="review-card">
-                                <img class="review-user-photo" src="{{ asset('fotouser/' . $review->user->photo) }}" alt="{{ $review->user->name }}'s Photo">
-                                <p class="review-username">{{ $review->user->name }}</p>
-                                <p class="review-rating">{{ $review->rating }}</p>
-                                <p class="review-comment">{{ $review->comment }}</p>
-                                <!-- Display other review details as needed -->
-                            </div>
-                        @endforeach
+                        <div class="review-grid">
+                            @foreach($provider->reviews->take(3) as $key => $review)
+                                <div class="review-card">
+                                    <img class="review-user-photo" src="{{ asset('fotouser/' . $review->user->photo) }}" alt="{{ $review->user->name }}'s Photo">
+                                    <p class="review-username">{{ $review->user->name }}</p>
+                                    <p class="review-rating">{{ $review->rating }}</p>
+                                    @if(strlen($review->comment) > 40)
+                                        <p class="review-comment">{{ substr($review->comment, 0, 40) }}...</p>
+                                    @else
+                                        <p class="review-comment">{{ $review->comment }}</p>
+                                    @endif
+                                    <!-- Display other review details as needed -->
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             @endforeach
