@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class ="containerpenyedia">
     <div class="container mt-5">
         <div class="card">
             <div class="card-header">
@@ -44,4 +45,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

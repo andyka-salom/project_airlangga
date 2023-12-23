@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="container">
         <h1>Become Provider</h1>
 
@@ -48,7 +49,8 @@
                         <input type="number" name="Harga" id="Harga" class="form-control" required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block" style="width: 150px; margin-top: 10px">Kirim</button>                </form>
+                    <button type="submit" class="btn btn-primary btn-block" style="width: 150px; margin-top: 10px">Kirim</button>                
+                    </form>
             </div>
         </div>
     </div>

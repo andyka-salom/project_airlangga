@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class ="containerutamaorder">
+<div class ="containerpenyedia">
     <div class="container mt-5">
         <div class="card">
             <div class="card-header">

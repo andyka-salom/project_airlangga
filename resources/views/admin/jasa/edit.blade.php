@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class ="containerutamadikit">
     <div class="container mt-5">
         <div class="card shadow">
             <div class="card-header text-center">
@@ -52,4 +53,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

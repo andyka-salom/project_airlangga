@@ -31,6 +31,7 @@
     </div> --}}
 
     <section class="section-padding">
+        <div class ="containerpenyedia">
         <div class="container">
             <div class="row">
     
@@ -79,7 +80,7 @@
                     @empty
                     <p>Tidak ada profil penyedia jasa yang ditemukan.</p>
                     @endforelse
-    
+                </div>
     </section>    
 
 

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class ="containerpenyedia">
     <div class="container mt-5">
         <h2 style="margin-top: 100px;">Write a Review</h2>
         <form method="post" action="{{ route('submit.review', ['order_id' => $order->id]) }}">
@@ -22,4 +23,5 @@
             <button type="submit" class="btn btn-primary">Submit Review</button>
         </form>
     </div>
+</div>
 @endsection

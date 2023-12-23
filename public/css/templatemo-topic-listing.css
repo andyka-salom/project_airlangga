@@ -928,11 +928,11 @@ blockquote {
 
 .site-footer {
   border-bottom: 10px solid var(--secondary-color);
-  /* position: fixed; */
+  position: relative;
   bottom: 0;
   width: 100%;
-  background-color: #333; /* Sesuaikan dengan warna latar belakang footer Anda */
-  color: #fff; /* Sesuaikan dengan warna teks footer Anda */
+  background-color: #333; 
+  color: #fff; 
   padding: 20px 0;
 }
 
@@ -1195,15 +1195,15 @@ blockquote {
   color: #fff; /* Sesuaikan dengan warna teks footer */
   padding: 20px 0;
 }
-/* .containerutama{
-  margin-bottom: 105px;
+.containerutama{
+  margin-bottom: 24px;
 }
-.containerutamaorder{
-  margin-bottom: 23%;
+.containerutamadikit{
+  margin-bottom: 18%;
 }
 .containerpenyedia{
   margin-bottom: 506px;
-} */
+}
 
 
 .edit-profile-container {
@@ -1268,9 +1268,6 @@ textarea {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.edit-profile-form {
-  /* text-align: center; */
-}
 
 .profile-photo-container {
   position: relative;

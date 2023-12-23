@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class ="containerutamadikit">
     <div class="container">
         <div class="col-lg-12 col-12 text-center">
             <h3 class="mb-4" style="margin-top: 15px">Kategori Jasa</h3>
@@ -23,5 +24,6 @@
                 @endforeach
             </div>
         </div>
+    </div>
  
 @endsection

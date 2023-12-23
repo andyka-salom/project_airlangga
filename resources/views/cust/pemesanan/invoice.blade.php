@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class ="containerpenyedia">
 <div class="container mt-5">
         <h1 style="margin-top: 100px;">Detail Pesanan</h1>
         <div class="order-details">
@@ -32,4 +33,5 @@
             <tr>
         </table>
     </div>
+</div>
 @endsection
