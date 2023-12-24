@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-lg-7 col-md-6 col-sm-12 wow fadeIn" data-wow-delay=".5s">
                             <h5 class="text-primary">About Us</h5>
-                            <h1 class="mb-4">Apa Itu Airlangga Talent Network</h1>
+                            <h2 class="mb-4">Apa Itu Airlangga Talent Network</h2>
                             <p>Adalah sebuah platform yang menyediakan peluang pekerjaan untuk warga Universitas Airlangga yang memiliki bakat. Platform ini adalah sebuah sistem yang didesain untuk memberikan peluang pekerjaan kepada mahasiswa Universitas Airlangga yang memiliki beragam bakat dan keterampilan. Melalui platform ini, mahasiswa dapat mencari, melamar, dan mendapatkan pekerjaan sesuai dengan keahlian dan minat mereka. Tujuan utama dari platform ini adalah untuk membantu mahasiswa mengembangkan keterampilan praktis, memperoleh pengalaman kerja, dan mendapatkan penghasilan sambil masih mengejar pendidikan mereka. Dengan demikian, platform ini berfungsi sebagai jembatan yang menghubungkan antara mahasiswa dan peluang pekerjaan yang relevan di lingkungan Universitas Airlangga.</p>
                             {{-- <p class="mb-4">Pellentesque aliquam dolor eget urna ultricies tincidunt. Nam volutpat libero sit amet leo cursus, ac viverra eros tristique. Morbi quis quam mi. Cras vel gravida eros. Proin scelerisque quam nec elementum viverra. Suspendisse viverra hendrerit diam in tempus.</p> --}}
                             {{-- <a href="" class="btn btn-secondary rounded-pill px-5 py-3 text-white">More Details</a> --}}

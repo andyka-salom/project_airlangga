@@ -14,7 +14,7 @@
         </div>
         <br> <br> --}}
         <!-- Display provider information -->
-        <h2>More Information from {{ $profilPenyediaJasa->nama_toko }} </h2>
+        <h2>{{ $profilPenyediaJasa->nama_toko }} </h2>
         <div>
             {{-- <p><strong>Shop Name:</strong> {{ $profilPenyediaJasa->nama_toko }}</p> --}}
             @if($profilPenyediaJasa->photo)
