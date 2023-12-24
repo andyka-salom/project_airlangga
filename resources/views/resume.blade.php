@@ -4,18 +4,19 @@
 
 @section('content')
     <div class="container">
-        <h1>Resume for {{ $user->name }}</h1>
+        <br> <br>
+        {{-- <h2>Shop Profile {{ $profilPenyediaJasa->nama_toko }}</h2> --}}
 
         <!-- Display user information -->
-        <div>
+        {{-- <div>
             <p><strong>Email:</strong> {{ $user->email }}</p>
             <p><strong>Address:</strong> {{ $user->address ?? 'N/A' }}</p>
         </div>
-
+        <br> <br> --}}
         <!-- Display provider information -->
-        <h2>Provider Information</h2>
+        <h2>More Information from {{ $profilPenyediaJasa->nama_toko }} </h2>
         <div>
-            <p><strong>Shop Name:</strong> {{ $profilPenyediaJasa->nama_toko }}</p>
+            {{-- <p><strong>Shop Name:</strong> {{ $profilPenyediaJasa->nama_toko }}</p> --}}
             @if($profilPenyediaJasa->photo)
                 <img src="{{ asset('penyediaImages/' . $profilPenyediaJasa->photo) }}" class="img-fluid mb-3" width="200px" height="200px" alt="Provider Photo">
             @else
@@ -24,8 +25,9 @@
             <p><strong>Address:</strong> {{ $profilPenyediaJasa->address }}</p>
             <p><strong>Description:</strong> {{ $profilPenyediaJasa->description }}</p>
             <p><strong>Price:</strong> {{ $profilPenyediaJasa->Harga ?? 'N/A' }}</p>
+            <p><strong>Email:</strong> {{ $user->email }}</p>
         </div>
-
+        <br> <br>
         <!-- Display reviews -->
         <h2>Top 5 Reviews</h2>
         <div>
@@ -41,5 +43,6 @@
                 <p>No reviews available.</p>
             @endforelse
         </div>
+        <br> <br>
     </div>
 @endsection

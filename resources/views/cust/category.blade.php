@@ -4,8 +4,10 @@
 <div class ="containerutamadikit">
     <div class="container">
         <div class="col-lg-12 col-12 text-center">
-            <h3 class="mb-4" style="margin-top: 15px">Kategori Jasa</h3>
+            <br>
+            <h1 class="mb-4" style="margin-top: 15px">Kategori Jasa</h1>
         </div>
+        <br>
         <div class="row" style="margin-top: -90px;">
             <div class="container-fluid services row g-5 services-inner">
                 @foreach($categories as $category)
