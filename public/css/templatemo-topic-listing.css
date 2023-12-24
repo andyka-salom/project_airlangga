@@ -32,6 +32,7 @@ https://templatemo.com/tm-590-topic-listing
   --h6-font-size:                 22px;
   --p-font-size:                  16px;
   --menu-font-size:               14px;
+  --menu-dropdown-size:           12px;
   --btn-font-size:                18px;
   --copyright-font-size:          16px;
 
@@ -302,6 +303,7 @@ strong {
 
 .navbar-brand span {
   font-family: var(--title-font-family);
+  font-size: var(--h5-font-size);
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
@@ -357,7 +359,7 @@ strong {
   display: inline-block;
   color: var(--p-bg-color);
   font-family: var(--title-font-family); 
-  font-size: var(--menu-font-size);
+  font-size: var(--menu-dropdown-size);
   font-weight: var(--font-weight-medium);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -1256,7 +1258,7 @@ textarea {
 }
 
 .container {
-  margin-top: 20px;
+  margin-top: 4px;
 }
 
 .edit-profile-container {
