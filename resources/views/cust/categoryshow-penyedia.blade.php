@@ -7,7 +7,7 @@
             <div class="row">
     
                 <div class="col-lg-12 col-12 text-center">
-                    <h3 class="mb-4">Profil Penyedia Jasa</h3>
+                    <h1 class="mb-4">Profil Penyedia Jasa</h1>
                 </div>
     
                 @forelse ($profilPenyediaJasas as $profilPenyediaJasa)
