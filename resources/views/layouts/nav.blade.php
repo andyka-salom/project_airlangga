@@ -78,13 +78,16 @@
                             <li class="nav-item">
                                 <a class="nav-link click-scroll" href="#section_4">FAQs</a>
                             </li>
-                    <li class="nav-item">
-                    <a class="nav-link @if(Request::is('login')) active @endif" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
+                            <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link @if(Request::is('login')) active @endif" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            </ul>
                 @endauth
             </ul>
+            
             @auth
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-lg-2 me-lg-auto">
                     <li class="nav-item dropdown">
                         <a class="navbar-icon bi-person smoothscroll {{ request()->routeIs(['profile', 'show.provider.form']) ? 'active' : '' }}" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                         <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
