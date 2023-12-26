@@ -17,7 +17,7 @@
             </div>
             
             <div class="card-body">
-                <table class="table mt-3">
+                <table class="table mt-6">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -35,19 +35,22 @@
                                 <td>{{ $category->description }}</td>
                                 <td>
                                     @if($category->photo)
-                                        <img src="{{ asset('kategoriImages/'. $category->photo) }}" alt="{{ $category->name }}" width="50" class="img-thumbnail">
+                                        <img src="{{ asset('kategoriImages/'. $category->photo) }}" alt="{{ $category->name }}" style="height: 100%; width: 100%" class="img-thumbnail">
                                     @else
                                         Tidak ada foto
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('category.edit', $category->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                    <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="display: inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')">Hapus</button>
-                                    </form>
+                                    <div class="btn-group" role="group">
+                                        <a href="{{ route('category.edit', $category->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="margin-left: 5px;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')">Hapus</button>
+                                        </form>
+                                    </div>
                                 </td>
+                                
                             </tr>
                         @endforeach
                     </tbody>
