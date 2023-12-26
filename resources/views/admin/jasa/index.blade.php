@@ -30,18 +30,20 @@
                                     <td>{{ $jasa->deskripsi_jasa }}</td>
                                     <td>
                                         @if($jasa->image)
-                                            <img src="{{ asset('jasaImages/'. $jasa->image) }}" alt="{{ $jasa->nama_jasa }}" width="50" class="img-thumbnail">
+                                            <img src="{{ asset('jasaImages/'. $jasa->image) }}" alt="{{ $jasa->nama_jasa }}"  style="height: 100%; width: 80%" class="img-thumbnail">
                                         @else
                                             Tidak ada foto
                                         @endif
                                     </td>
                                     <td>
+                                        <div class="btn-group" role="group">
                                         <a href="{{ route('jasa.edit', $jasa->id_jasa) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <form action="{{ route('jasa.destroy', $jasa->id_jasa) }}" method="POST" style="display: inline">
+                                        <form action="{{ route('jasa.destroy', $jasa->id_jasa) }}" method="POST" style="margin-left: 5px;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus Jasa ini?')">Hapus</button>
                                         </form>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

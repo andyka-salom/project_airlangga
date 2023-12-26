@@ -15,7 +15,7 @@
                     <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
                         <div class="d-flex">
                             @if($profilPenyediaJasa->photo)
-                            <img src="{{ asset('penyediaImages/' . $profilPenyediaJasa->photo) }}" class="img-fluid mb-3" width="200px" height="200px" alt="">
+                            <img src="{{ asset('penyediaImages/' . $profilPenyediaJasa->photo) }}" class="img-fluid mb-3" width="100%" height="300px" alt="">
                             @else
                             Tidak ada foto
                             @endif

@@ -11,7 +11,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             @if($penyediaJasa->photo)
-                                <img src="{{ asset('penyediaImages/'. $penyediaJasa->photo) }}" width="200" class="rounded-circle border" alt="Foto Penyedia Jasa">
+                                <img src="{{ asset('penyediaImages/'. $penyediaJasa->photo) }}" style="height: 200px; width: 400px" class="rounded-circle border" alt="Foto Penyedia Jasa">
                             @else
                                 <div class="no-photo-placeholder rounded-circle border d-flex align-items-center justify-content-center" style="height: 200px; width: 200px; border: 2px dashed #ddd; background-color: #fff;">
                                     <span class="text-muted">Tidak ada foto</span>

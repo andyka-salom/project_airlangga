@@ -48,7 +48,7 @@
         </div>
     </div>
 </nav>
-<div class ="containerutama">
+<div class ="containerutamalogin">
 <div class ="utama">
 <div class="containerlogin" id="containerlogin">
   <div class="form-containerlogin sign-up-containerlogin">
@@ -80,7 +80,6 @@
     </form>
   </div>
 
-<div class ="containerutama">
   <div class="form-containerlogin sign-in-containerlogin">
     <form method="POST" action="{{ route('login') }}">
       @csrf
@@ -99,11 +98,11 @@
         </span>
       @enderror
       
-      @if (Route::has('password.request'))
+      {{-- @if (Route::has('password.request'))
           <a class="btn btn-link" href="{{ route('password.request') }}">
               {{ __('Forgot Your Password?') }}
           </a>
-      @endif
+      @endif --}}
       <button type="submit" class="btn btn-primary">
           {{ __('Login') }}
       </button>
