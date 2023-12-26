@@ -66,26 +66,47 @@ class JasaController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'nama_jasa' => 'required|unique:jasas,nama_jasa,'.$id.',id_jasa',
-            'deskripsi_jasa' => 'required',
-            'id_categories' => 'required|integer|exists:categories,id',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan validasi file sesuai kebutuhan
-        ]);
+{
+    $request->validate([
+        'nama_jasa' => 'required|unique:jasas,nama_jasa,' . $id . ',id_jasa',
+        'deskripsi_jasa' => 'required',
+        'id_categories' => 'required|integer|exists:categories,id',
+        'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
-        $jasas = jasa::find($id);
-        $awal = $jasas->image;
-        $jasas->nama_jasa = $request->input('nama_jasa');
-        $jasas->deskripsi_jasa = $request->input('deskripsi_jasa');
-        $jasas->id_categories = $request->input('id_categories');
-        $jasas->image = $awal;
-        // $jasas->slug = $request->input('nama_jasa');
+    $jasas = Jasa::find($id);
 
-        $request->image->move(public_path().'/jasaImages', $awal);
-        $jasas->save();
-        return redirect()->route('Adminjasa')->with('success', 'Jasa berhasil di update.');    
+    if (!$jasas) {
+        return redirect()->route('Adminjasa')->with('error', 'Jasa tidak ditemukan.');
     }
+
+    // Simpan nama file gambar baru
+    $newImageName = $jasas->image;
+
+    if ($request->hasFile('image')) {
+        // Hapus gambar lama jika ada
+        if ($jasas->image) {
+            $oldImagePath = public_path('jasaImages/' . $jasas->image);
+            if (file_exists($oldImagePath)) {
+                unlink($oldImagePath);
+            }
+        }
+
+        // Simpan gambar baru
+        $newImageName = $jasas->nama_jasa . '.' . $request->image->extension();
+        $request->image->move(public_path('jasaImages'), $newImageName);
+    }
+
+    $jasas->nama_jasa = $request->input('nama_jasa');
+    $jasas->deskripsi_jasa = $request->input('deskripsi_jasa');
+    $jasas->id_categories = $request->input('id_categories');
+    $jasas->image = $newImageName;
+    // $jasas->slug = $request->input('nama_jasa');
+    $jasas->save();
+
+    return redirect()->route('Adminjasa')->with('success', 'Jasa berhasil diperbarui.');
+}
+
         
     
     public function destroy($id)

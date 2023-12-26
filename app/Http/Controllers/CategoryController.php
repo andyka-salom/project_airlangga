@@ -101,23 +101,38 @@ class CategoryController extends Controller
         return view('admin.kategori.edit', compact('category'));
     }
 
-    public function update(Request $request, $id)
+     public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required|unique:categories,name,' . $id,
             'description' => 'required',
             'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
         ]);
-
+    
         $category = Category::find($id);
-        $awal = $category->photo;
+    
+        // Simpan nama file foto baru
+        $newPhotoName = $category->photo;
+    
+        if ($request->hasFile('photo')) {
+            // Hapus foto lama jika ada
+            if ($category->photo) {
+                $oldPhotoPath = public_path('kategoriImages/' . $category->photo);
+                if (file_exists($oldPhotoPath)) {
+                    unlink($oldPhotoPath);
+                }
+            }
+    
+            // Simpan foto baru
+            $newPhotoName = $category->name . '.' . $request->photo->extension();
+            $request->photo->move(public_path('kategoriImages'), $newPhotoName);
+        }
+    
         $category->name = $request->input('name');
         $category->description = $request->input('description');
-        $category->photo = $awal;
-
-        $request->photo->move(public_path().'/kategoriImages', $awal);
+        $category->photo = $newPhotoName;
         $category->save();
-
+    
         return redirect()->route('Admincategory')->with('success', 'Kategori berhasil diperbarui.');
     }
 
