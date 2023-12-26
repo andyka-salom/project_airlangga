@@ -10,7 +10,7 @@
             <div class="card-body d-flex align-items-center">
                 <div>
                     @if($pendaftarJasa->photo)
-                        <img src="{{ asset('penyediaImages/'. $pendaftarJasa->photo) }}" style="height: 200%; width: 200%" alt="{{ $pendaftarJasa->nama_toko }} Photo">
+                        <img src="{{ asset('penyediaImages/'. $pendaftarJasa->photo) }}" width="300px" height="100%"  alt="{{ $pendaftarJasa->nama_toko }} Photo">
                     @else
                         <div class="no-photo-placeholder rounded-circle">
                             <span class="d-flex align-items-center justify-content-center" style="height: 200px; width: 200px; border: 2px dashed #ddd;">
