@@ -81,17 +81,26 @@ class ProfilpenyediaJasaController extends Controller
     return view('admin.daftarpendaftar', compact('pendaftarPenyediaJasas'));
 }
 public function ubahStatus($id, $status)
-    {
-        $validStatus = ['pending', 'approved'];
+{
+    $validStatus = ['pending', 'approved'];
 
-        if (!in_array($status, $validStatus)) {
-            return redirect()->back()->with('error', 'Status tidak valid.');
-        }
-
-        $penyediaJasa = profilpenyedia_jasa::find($id);
-        $penyediaJasa->status = $status;
-        $penyediaJasa->save();
-
-        return redirect()->route('admin.daftarpendaftar')->with('success', 'Status Pendaftar diubah.');
+    if (!in_array($status, $validStatus)) {
+        return redirect()->back()->with('error', 'Status tidak valid.');
     }
+
+    $penyediaJasa = profilpenyedia_jasa::find($id);
+    $penyediaJasa->status = $status;
+    $penyediaJasa->save();
+
+   
+    if ($status == 'approved') {
+        $user = $penyediaJasa->user; 
+        if ($user) {
+            $user->role = 'service_provider';
+            $user->save();
+        }
+    }
+
+    return redirect()->route('admin.daftarpendaftar')->with('success', 'Status Pendaftar diubah.');
+}
 }
