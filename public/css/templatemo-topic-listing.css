@@ -1445,9 +1445,9 @@ input[type="file"] {
 
 .card img {
   max-width: 100%;
-  padding: 20px;
-  width: 1600px;
-  height: 500px;
+  padding: 5px;
+  /* width: 1600px;
+  height: 500px; */
   margin-bottom: 10px;
 }
 
