@@ -2,7 +2,7 @@
 
 @section('content')
 <script type="text/javascript"
-      src="https://app.sandbox.midtrans.com/snap/snap.js"
+      src="{{config('midtrans.snap_url'}}"
       data-client-key="{{ config('midtrans.client_key')}}"></script>    
     <div class="container mt-5">
         <h1 style="margin-top: 100px;">Detail Pesanan</h1>

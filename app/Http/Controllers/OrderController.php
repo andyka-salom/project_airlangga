@@ -29,7 +29,7 @@ class OrderController extends Controller
     
     
             \Midtrans\Config::$serverKey = config('midtrans.server_key');
-            \Midtrans\Config::$isProduction = false;
+            \Midtrans\Config::$isProduction = config('midtrans.is_production');
             \Midtrans\Config::$isSanitized = true;
             \Midtrans\Config::$is3ds = true;
     
@@ -39,7 +39,8 @@ class OrderController extends Controller
                     'gross_amount' => $order->total_bayar,
                 ),
                 'customer_details' => array(
-                    'name' => $request->name,
+                    'first_name' => $request->name,
+                    'last_name' =>'',
                     'phone' => $request->phone,
                 ),
             );
@@ -52,7 +53,7 @@ class OrderController extends Controller
             $serverKey = config('midtrans.server_key');
             $hashed = hash("sha512", $request->order_id.$request->status_code.$request->gross_amount.$serverKey);
             if ($hashed == $request->signature_key){
-                if ($request->transaction_status == 'capture'){
+                if ($request->transaction_status == 'capture' or $request->transaction_status == 'settlement'){
                     $order = Order::find($request->order_id);
                     $order->update(['status' => 'Paid']);
                 }
